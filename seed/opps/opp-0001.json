@@ -5,24 +5,27 @@
   "countries": [
     "SG"
   ],
+  "salesRegions": [
+    "amu"
+  ],
   "refs": [
     {
       "type": "SF PS",
-      "value": "JMERC20261124-250611"
+      "value": "TWIER20261124-250611"
     }
   ],
   "summary": "Sales asks Proserv to quote a rack-and-stack RFQ for a new data hall in Singapore. The regular contact is out of office, so the request came to the shared mailbox. The attached Word document with the scope cannot be opened; a readable copy has been requested.",
   "stakeholders": [
     {
-      "name": "Jonas Mercier",
+      "name": "Tomasz Wierzbicki",
       "company": "Evernex",
       "role": "Business Development, requester",
       "side": "sales"
     },
     {
-      "name": "Ines Calloway",
+      "name": "Priscilla Moorcroft",
       "company": "Evernex",
-      "role": "Proserv, asked for a readable file",
+      "role": "Sales PM, asked for a readable file",
       "side": "proserv"
     },
     {
@@ -57,24 +60,25 @@
     "due": "2026-11-25"
   },
   "suggest": {
-    "sa": "priya-raghavan",
-    "pm": "naomi-takeda",
-    "reason": "Site in Singapore: APAC defaults from the rule table."
+    "salesPm": "helen-ashdown",
+    "sa": "jun-wei-ong",
+    "pm": "",
+    "reason": "Sales and site in AMU: default Sales PM and Solution Architect of AMU. AMU has no Project Manager yet."
   },
   "mails": [
     {
       "date": "2026-11-24T10:05:00+01:00",
-      "from": "Ines Calloway",
-      "subject": "FW: HDC - Request for Quotation - 0008114502 - SF ref: JMERC20261124-250611"
+      "from": "Priscilla Moorcroft",
+      "subject": "FW: HDC - Request for Quotation - 0008114502 - SF ref: TWIER20261124-250611"
     },
     {
       "date": "2026-11-24T06:45:00+01:00",
-      "from": "Jonas Mercier",
-      "subject": "RE: HDC - Request for Quotation - 0008114502 - SF ref: JMERC20261124-250611"
+      "from": "Tomasz Wierzbicki",
+      "subject": "RE: HDC - Request for Quotation - 0008114502 - SF ref: TWIER20261124-250611"
     },
     {
       "date": "2026-11-24T06:27:00+01:00",
-      "from": "Jonas Mercier",
+      "from": "Tomasz Wierzbicki",
       "subject": "RE: HDC - Request for Quotation - 0008114502"
     }
   ],

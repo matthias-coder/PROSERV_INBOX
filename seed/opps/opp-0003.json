@@ -6,31 +6,34 @@
     "AU",
     "NZ"
   ],
+  "salesRegions": [
+    "amu"
+  ],
   "refs": [],
   "summary": "Opportunity with short on-site SLAs. The usual partners are not a fit, so a local partner is needed. The regional director pointed to two local contacts; one was reached, one has not answered. A third partner will be tried.",
   "stakeholders": [
     {
-      "name": "Scott Calder",
+      "name": "Graham Tindall",
       "company": "Evernex",
       "role": "Sales ANZ",
       "side": "sales"
     },
     {
-      "name": "Alexis Duval",
+      "name": "Olivier Sauvage",
       "company": "Evernex",
       "role": "Regional director ANZ and South East Asia",
       "side": "sales"
     },
     {
-      "name": "Beth Carroway",
+      "name": "Trevor Lindgren",
       "company": "Evernex",
-      "role": "Program manager",
+      "role": "Solution Architect NORAM, asked for local partners",
       "side": "proserv"
     },
     {
-      "name": "Yann Lefort",
+      "name": "Jun Wei Ong",
       "company": "Evernex",
-      "role": "Proserv, out this week",
+      "role": "Solution Architect APAC, out this week",
       "side": "proserv"
     }
   ],
@@ -54,34 +57,35 @@
     "due": "2026-11-26"
   },
   "suggest": {
-    "sa": "priya-raghavan",
-    "pm": "naomi-takeda",
-    "reason": "Australia and New Zealand: APAC defaults from the rule table."
+    "salesPm": "helen-ashdown",
+    "sa": "jun-wei-ong",
+    "pm": "",
+    "reason": "Sales and sites in AMU: default Sales PM and Solution Architect of AMU."
   },
   "mails": [
     {
       "date": "2026-11-20T09:05:00+01:00",
-      "from": "Scott Calder",
+      "from": "Graham Tindall",
       "subject": "RE: Opportunity in Aus and NZ"
     },
     {
       "date": "2026-11-20T02:49:00+01:00",
-      "from": "Alexis Duval",
+      "from": "Olivier Sauvage",
       "subject": "RE: Opportunity in Aus and NZ"
     },
     {
       "date": "2026-11-20T00:06:00+01:00",
-      "from": "Beth Carroway",
+      "from": "Trevor Lindgren",
       "subject": "RE: Opportunity in Aus and NZ"
     },
     {
       "date": "2026-11-19T16:35:00+01:00",
-      "from": "Yann Lefort",
+      "from": "Jun Wei Ong",
       "subject": "RE: Opportunity in Aus and NZ"
     },
     {
       "date": "2026-11-19T16:25:00+01:00",
-      "from": "Beth Carroway",
+      "from": "Trevor Lindgren",
       "subject": "RE: Opportunity in Aus and NZ"
     }
   ],

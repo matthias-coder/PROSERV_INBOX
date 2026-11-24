@@ -1,0 +1,83 @@
+{
+  "id": "opp-0010",
+  "title": "Data centre relocation, Lyon",
+  "customer": "Cassiopée Assurances",
+  "countries": [
+    "FR"
+  ],
+  "salesRegions": [
+    "swe"
+  ],
+  "refs": [
+    {
+      "type": "SF PS",
+      "value": "NDELA20260804-233571"
+    }
+  ],
+  "summary": "Relocation of 46 racks between two sites in Lyon, finished in October. The final invoice is with the customer; two partner invoices are still open.",
+  "stakeholders": [
+    {
+      "name": "Nadège Delacroix",
+      "company": "Evernex",
+      "role": "Account manager France",
+      "side": "sales"
+    },
+    {
+      "name": "Bertrand Achard",
+      "company": "Cassiopée Assurances",
+      "role": "Infrastructure manager",
+      "side": "customer"
+    },
+    {
+      "name": "Julien Carpentier",
+      "company": "Evernex",
+      "role": "Project manager",
+      "side": "proserv"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-08-04",
+      "text": "Request opened in Salesforce."
+    },
+    {
+      "date": "2026-10-18",
+      "text": "Relocation weekend."
+    },
+    {
+      "date": "2026-10-29",
+      "text": "Acceptance signed by the customer."
+    },
+    {
+      "date": "2026-11-12",
+      "text": "Final invoice sent."
+    }
+  ],
+  "deadline": null,
+  "nextAction": {
+    "text": "Chase the two open partner invoices",
+    "due": "2026-11-28"
+  },
+  "suggest": {
+    "salesPm": "",
+    "sa": "karim-benali",
+    "pm": "julien-carpentier",
+    "reason": "Site in France: default owners of SWE."
+  },
+  "mails": [
+    {
+      "date": "2026-11-19T11:44:00+01:00",
+      "from": "Julien Carpentier",
+      "subject": "RE: Cassiopée déménagement Lyon - factures partenaires - SF ref: NDELA20260804-233571"
+    },
+    {
+      "date": "2026-11-12T15:02:00+01:00",
+      "from": "Nadège Delacroix",
+      "subject": "RE: Cassiopée déménagement Lyon - facture finale - SF ref: NDELA20260804-233571"
+    }
+  ],
+  "needsReview": false,
+  "mailCount": 2,
+  "lastMailAt": "2026-11-19T11:44:00+01:00",
+  "firstMailAt": "2026-11-12T15:02:00+01:00"
+}

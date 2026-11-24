@@ -5,26 +5,29 @@
   "countries": [
     "FR"
   ],
+  "salesRegions": [
+    "swe"
+  ],
   "refs": [],
-  "summary": "A partner that normally supports Evernex with Wi-Fi surveys asked Evernex for help at a site in Rouen. Sales declined: the company is registered as a partner, not as a customer, and would have to be set up as a customer first.",
+  "summary": "A partner that normally supports Evernex with Wi-Fi surveys asked Evernex for help at a site in Rouen. Declined: the company is registered as a partner, not as a customer, and would have to be set up as a customer first.",
   "stakeholders": [
     {
-      "name": "Oren Petrakis",
+      "name": "Henri Castaing",
       "company": "Plumeria Networks",
       "role": "Business development manager",
       "side": "partner"
     },
     {
-      "name": "Valentin Elias",
+      "name": "Cormac Whitby",
       "company": "Evernex",
-      "role": "Partner management",
-      "side": "sales"
+      "role": "Head of Solution Architects, answered the partner",
+      "side": "proserv"
     }
   ],
   "timeline": [
     {
       "date": "2026-11-19",
-      "text": "Partner management takes the request and contacts the partner."
+      "text": "Proserv takes the request and contacts the partner."
     },
     {
       "date": "2026-11-23",
@@ -38,24 +41,25 @@
   "deadline": null,
   "nextAction": null,
   "suggest": {
-    "sa": "mara-lindqvist",
-    "pm": "helena-voss",
-    "reason": "Site in France: EMEA defaults. The request was declined, so no assignment may be needed."
+    "salesPm": "",
+    "sa": "karim-benali",
+    "pm": "",
+    "reason": "Site in France: default Solution Architect of SWE. The request was declined, so no owner may be needed."
   },
   "mails": [
     {
       "date": "2026-11-23T10:43:00+01:00",
-      "from": "Valentin Elias",
+      "from": "Cormac Whitby",
       "subject": "RE: Service request 76100 Rouen FR"
     },
     {
       "date": "2026-11-23T10:24:00+01:00",
-      "from": "Oren Petrakis",
+      "from": "Henri Castaing",
       "subject": "RE: Service request 76100 Rouen FR"
     },
     {
       "date": "2026-11-19T15:30:00+01:00",
-      "from": "Valentin Elias",
+      "from": "Cormac Whitby",
       "subject": "RE: Service request 76100 Rouen FR"
     }
   ],

@@ -5,24 +5,27 @@
   "countries": [
     "IN"
   ],
+  "salesRegions": [
+    "amu"
+  ],
   "refs": [
     {
       "type": "SF PS",
-      "value": "DSHAN20261117-248690"
+      "value": "RMEHR20261117-248690"
     }
   ],
   "summary": "Sales received an indicative price and thanked Proserv. The customer can be asked for whatever is still missing to turn the indication into a commercial offer.",
   "stakeholders": [
     {
-      "name": "Devika Shankar",
+      "name": "Rohan Mehrotra",
       "company": "Evernex",
       "role": "Sales director",
       "side": "sales"
     },
     {
-      "name": "Sara Whitlow",
+      "name": "Zara Qureshi",
       "company": "Evernex",
-      "role": "Proserv, sent the indicative price",
+      "role": "Sales PM, sent the indicative price",
       "side": "proserv"
     }
   ],
@@ -42,15 +45,16 @@
     "due": "2026-11-26"
   },
   "suggest": {
-    "sa": "priya-raghavan",
-    "pm": "naomi-takeda",
-    "reason": "Customer site in India: APAC defaults from the rule table."
+    "salesPm": "helen-ashdown",
+    "sa": "jun-wei-ong",
+    "pm": "",
+    "reason": "Customer site in India: default owners of AMU."
   },
   "mails": [
     {
       "date": "2026-11-20T06:25:00+01:00",
-      "from": "Devika Shankar",
-      "subject": "Re: PS # DSHAN20261117-248690 : H&F opp - Norvane"
+      "from": "Rohan Mehrotra",
+      "subject": "Re: PS # RMEHR20261117-248690 : H&F opp - Norvane"
     }
   ],
   "needsReview": false,

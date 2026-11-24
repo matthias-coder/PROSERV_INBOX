@@ -1,9 +1,11 @@
 {
-  "sa": "tobias-arnesen",
-  "pm": "callum-ferreira",
+  "salesPm": "jonas-pfeiffer",
+  "sa": "florian-achterberg",
+  "pm": "katrin-wendel",
   "salesRegion": "",
   "serviceRegions": [],
-  "status": "won",
+  "stage": "8",
+  "outcome": "",
   "nextAction": {
     "text": "",
     "who": "",

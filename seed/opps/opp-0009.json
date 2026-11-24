@@ -8,13 +8,16 @@
     "BE",
     "PL"
   ],
+  "salesRegions": [
+    "nece"
+  ],
   "refs": [
     {
       "type": "SF PS",
       "value": "LBRAN20261002-241960"
     }
   ],
-  "summary": "Staging in the warehouse and on-site installation of 600 routers in four countries. The customer signed in mid November; the project has been handed over to delivery.",
+  "summary": "Staging in the warehouse and on-site installation of 600 routers in four countries. The customer signed in mid November; the project has been handed over to delivery and is being set up.",
   "stakeholders": [
     {
       "name": "Lena Brandt",
@@ -29,7 +32,7 @@
       "side": "customer"
     },
     {
-      "name": "Callum Ferreira",
+      "name": "Katrin Wendel",
       "company": "Evernex",
       "role": "Project manager",
       "side": "proserv"
@@ -51,19 +54,27 @@
     {
       "date": "2026-11-18",
       "text": "Handover to delivery."
+    },
+    {
+      "date": "2026-12-02",
+      "text": "Kick-off planned."
     }
   ],
   "deadline": null,
-  "nextAction": null,
+  "nextAction": {
+    "text": "Agree the kick-off agenda with the customer",
+    "due": "2026-11-30"
+  },
   "suggest": {
-    "sa": "mara-lindqvist",
-    "pm": "helena-voss",
-    "reason": "Lead country Germany: EMEA defaults from the rule table."
+    "salesPm": "jonas-pfeiffer",
+    "sa": "florian-achterberg",
+    "pm": "katrin-wendel",
+    "reason": "First country Germany: default owners of NECE."
   },
   "mails": [
     {
       "date": "2026-11-18T09:20:00+01:00",
-      "from": "Callum Ferreira",
+      "from": "Katrin Wendel",
       "subject": "RE: Kestrel router rollout - handover - SF ref: LBRAN20261002-241960"
     },
     {

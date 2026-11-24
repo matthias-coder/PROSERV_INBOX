@@ -1,12 +1,14 @@
 {
-  "sa": "mara-lindqvist",
-  "pm": "helena-voss",
+  "salesPm": "jonas-pfeiffer",
+  "sa": "florian-achterberg",
+  "pm": "",
   "salesRegion": "",
   "serviceRegions": [],
-  "status": "quoting",
+  "stage": "3.4",
+  "outcome": "",
   "nextAction": {
     "text": "Finish the effort estimate for Vienna including the weekend option",
-    "who": "mara-lindqvist",
+    "who": "florian-achterberg",
     "due": "2026-11-27"
   },
   "note": "",

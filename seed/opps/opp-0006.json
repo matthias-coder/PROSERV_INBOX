@@ -6,6 +6,9 @@
     "DE",
     "AT"
   ],
+  "salesRegions": [
+    "nece"
+  ],
   "refs": [
     {
       "type": "SF PS",
@@ -31,9 +34,9 @@
       "side": "customer"
     },
     {
-      "name": "Mara Lindqvist",
+      "name": "Florian Achterberg",
       "company": "Evernex",
-      "role": "Solution architect",
+      "role": "Solution Architect",
       "side": "proserv"
     }
   ],
@@ -62,9 +65,10 @@
     "due": "2026-11-27"
   },
   "suggest": {
-    "sa": "mara-lindqvist",
-    "pm": "helena-voss",
-    "reason": "Germany and Austria: EMEA defaults from the rule table."
+    "salesPm": "jonas-pfeiffer",
+    "sa": "florian-achterberg",
+    "pm": "katrin-wendel",
+    "reason": "Germany and Austria: default owners of NECE."
   },
   "mails": [
     {
@@ -79,7 +83,7 @@
     },
     {
       "date": "2026-11-13T11:02:00+01:00",
-      "from": "Mara Lindqvist",
+      "from": "Florian Achterberg",
       "subject": "RE: Quintara Decom FRA/VIE - survey notes Frankfurt"
     },
     {

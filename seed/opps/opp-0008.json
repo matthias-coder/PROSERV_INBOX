@@ -6,6 +6,9 @@
     "BR",
     "CL"
   ],
+  "salesRegions": [
+    "latam"
+  ],
   "refs": [
     {
       "type": "SF PS",
@@ -48,9 +51,10 @@
     "due": "2026-11-28"
   },
   "suggest": {
-    "sa": "diego-montalvo",
-    "pm": "rachel-okafor",
-    "reason": "Brazil and Chile: LATAM defaults from the rule table."
+    "salesPm": "hector-salgado",
+    "sa": "trevor-lindgren",
+    "pm": "teresa-villanueva",
+    "reason": "Brazil and Chile: default owners of LATAM, who sit in the NORAM team."
   },
   "mails": [
     {

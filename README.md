@@ -1,7 +1,7 @@
 # Proserv Board
 
 The shared mailbox EVX Proserv as an opportunity board: one row per request instead of one row per mail,
-with Solution Architect, Project Manager, sales and service region, status and next action.
+with Sales PM, Solution Architect, Project Manager, sales and service region, stage and next action.
 Published as a claude.ai artifact in the TITANIA look.
 
 Board: https://claude.ai/artifact/TLC2jbE9C9WThwYQUrbjDx
@@ -11,10 +11,10 @@ Board: https://claude.ai/artifact/TLC2jbE9C9WThwYQUrbjDx
 | Part | State |
 |---|---|
 | Board page | built, published, tested locally and against the artifact database |
-| Demo data | 9 invented opportunities, 8 invented people; the board says so in a notice |
+| Demo data | 11 invented opportunities and 45 invented people in the shape of the PS organisation; the board says so in a notice |
 | Sync from the mailbox | **not built.** `sync/prompt.md` is a draft that has never run |
 | Microsoft 365 connector | not connected; whether it can read the shared mailbox is unknown |
-| Master data | invented people and guessed sales regions; real lists are still missing |
+| Master data | invented people; the country-to-region mapping is a guess; real lists are still missing |
 
 The design and the decisions behind it are in `docs/superpowers/specs/2026-11-24-proserv-board-design.md`.
 
@@ -22,9 +22,13 @@ The design and the decisions behind it are in `docs/superpowers/specs/2026-11-24
 
 - A scheduled Claude run reads new mails, groups them into opportunities and writes them to the
   artifact's database (`opps`). It also suggests owners from a rule table.
-- The board page reads the database live. Contributors set SA, PM, regions, status and next action
-  (`assign`) and can ask for a grouping fix (`corrections`). Viewers only read.
-- Sales and service regions follow the countries of an opportunity unless someone sets them by hand.
+- The board page reads the database live. Contributors set Sales PM, SA, PM, regions, stage, outcome
+  and next action (`assign`) and can ask for a grouping fix (`corrections`). Viewers only read.
+- Opportunities are listed by phase of the PS process (pre-sales, delivery, finance); those without
+  the owner their phase needs come first.
+- The service region follows the countries of an opportunity, the sales region is read from the mails;
+  both can be set by hand.
+- The Team page shows the PS organisation by region with each owner's open opportunities.
 
 The data model is in `sync/schema.md`.
 

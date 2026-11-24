@@ -1,52 +1,455 @@
 {
+  "roles": [
+    {
+      "id": "vp",
+      "name": "VP Group Professional Services"
+    },
+    {
+      "id": "head-ps",
+      "name": "Head of PS"
+    },
+    {
+      "id": "head-sa",
+      "name": "Head of Solution Architects & new services"
+    },
+    {
+      "id": "head-delivery",
+      "name": "COO, Head of PS Delivery"
+    },
+    {
+      "id": "head-service-delivery",
+      "name": "Head of Service Delivery"
+    },
+    {
+      "id": "sales-pm",
+      "name": "Sales PM"
+    },
+    {
+      "id": "sa",
+      "name": "Solution Architect"
+    },
+    {
+      "id": "pm",
+      "name": "Project Manager"
+    },
+    {
+      "id": "sales-coord",
+      "name": "Sales Coordinator"
+    },
+    {
+      "id": "service-delivery",
+      "name": "Service Delivery"
+    },
+    {
+      "id": "resourcing",
+      "name": "Vendor Management / Resourcing"
+    }
+  ],
   "people": [
     {
-      "id": "mara-lindqvist",
-      "name": "Mara Lindqvist",
-      "role": "SA",
-      "region": "emea"
+      "id": "etienne-marchais",
+      "name": "Étienne Marchais",
+      "role": "vp",
+      "region": "global",
+      "team": "",
+      "country": "FR",
+      "head": true
     },
     {
-      "id": "tobias-arnesen",
-      "name": "Tobias Arnesen",
-      "role": "SA",
-      "region": "emea"
+      "id": "cormac-whitby",
+      "name": "Cormac Whitby",
+      "role": "head-sa",
+      "region": "global",
+      "team": "",
+      "country": "GB",
+      "head": true
     },
     {
-      "id": "priya-raghavan",
-      "name": "Priya Raghavan",
-      "role": "SA",
-      "region": "apac"
+      "id": "fiona-harrow",
+      "name": "Fiona Harrow",
+      "role": "head-delivery",
+      "region": "global",
+      "team": "",
+      "country": "GB",
+      "head": true
     },
     {
-      "id": "diego-montalvo",
-      "name": "Diego Montalvo",
-      "role": "SA",
-      "region": "americas"
+      "id": "gareth-linley",
+      "name": "Gareth Linley",
+      "role": "head-service-delivery",
+      "region": "global",
+      "team": "Service Delivery",
+      "country": "GB",
+      "head": false
     },
     {
-      "id": "helena-voss",
-      "name": "Helena Voss",
-      "role": "PM",
-      "region": "emea"
+      "id": "duncan-pryce",
+      "name": "Duncan Pryce",
+      "role": "resourcing",
+      "region": "global",
+      "team": "Resourcing",
+      "country": "GB",
+      "head": false
     },
     {
-      "id": "callum-ferreira",
-      "name": "Callum Ferreira",
-      "role": "PM",
-      "region": "emea"
+      "id": "mei-suan-lau",
+      "name": "Mei Suan Lau",
+      "role": "service-delivery",
+      "region": "global",
+      "team": "Resourcing",
+      "country": "MY",
+      "head": false
     },
     {
-      "id": "naomi-takeda",
-      "name": "Naomi Takeda",
-      "role": "PM",
-      "region": "apac"
+      "id": "kofi-baptiste",
+      "name": "Kofi Baptiste",
+      "role": "service-delivery",
+      "region": "global",
+      "team": "Resourcing",
+      "country": "AE",
+      "head": false
     },
     {
-      "id": "rachel-okafor",
-      "name": "Rachel Okafor",
-      "role": "PM",
-      "region": "americas"
+      "id": "aisyah-rahman",
+      "name": "Aisyah Rahman",
+      "role": "sales-coord",
+      "region": "global",
+      "team": "Admin",
+      "country": "MY",
+      "head": false
+    },
+    {
+      "id": "yasmine-ouali",
+      "name": "Yasmine Ouali",
+      "role": "sales-coord",
+      "region": "global",
+      "team": "Admin",
+      "country": "MA",
+      "head": false
+    },
+    {
+      "id": "imogen-radcliffe",
+      "name": "Imogen Radcliffe",
+      "role": "head-ps",
+      "region": "amu",
+      "team": "",
+      "country": "GB",
+      "head": true
+    },
+    {
+      "id": "zara-qureshi",
+      "name": "Zara Qureshi",
+      "role": "sales-pm",
+      "region": "amu",
+      "team": "APAC",
+      "country": "PK",
+      "head": false
+    },
+    {
+      "id": "jun-wei-ong",
+      "name": "Jun Wei Ong",
+      "role": "sa",
+      "region": "amu",
+      "team": "APAC",
+      "country": "MY",
+      "head": false
+    },
+    {
+      "id": "tariq-haddad",
+      "name": "Tariq Haddad",
+      "role": "sa",
+      "region": "amu",
+      "team": "MEA",
+      "country": "AE",
+      "head": false
+    },
+    {
+      "id": "helen-ashdown",
+      "name": "Helen Ashdown",
+      "role": "sales-pm",
+      "region": "amu",
+      "team": "UK",
+      "country": "GB",
+      "head": false
+    },
+    {
+      "id": "priscilla-moorcroft",
+      "name": "Priscilla Moorcroft",
+      "role": "sales-pm",
+      "region": "amu",
+      "team": "UK",
+      "country": "GB",
+      "head": false
+    },
+    {
+      "id": "henrik-solbach",
+      "name": "Henrik Solbach",
+      "role": "head-ps",
+      "region": "nece",
+      "team": "",
+      "country": "DE",
+      "head": true
+    },
+    {
+      "id": "jonas-pfeiffer",
+      "name": "Jonas Pfeiffer",
+      "role": "sales-pm",
+      "region": "nece",
+      "team": "",
+      "country": "DE",
+      "head": false
+    },
+    {
+      "id": "lukas-brandauer",
+      "name": "Lukas Brandauer",
+      "role": "sales-pm",
+      "region": "nece",
+      "team": "",
+      "country": "AT",
+      "head": false
+    },
+    {
+      "id": "katrin-wendel",
+      "name": "Katrin Wendel",
+      "role": "pm",
+      "region": "nece",
+      "team": "",
+      "country": "DE",
+      "head": false
+    },
+    {
+      "id": "sabine-rottger",
+      "name": "Sabine Röttger",
+      "role": "pm",
+      "region": "nece",
+      "team": "",
+      "country": "DE",
+      "head": false
+    },
+    {
+      "id": "reto-amstutz",
+      "name": "Reto Amstutz",
+      "role": "pm",
+      "region": "nece",
+      "team": "",
+      "country": "CH",
+      "head": false
+    },
+    {
+      "id": "milan-dvorak",
+      "name": "Milan Dvořák",
+      "role": "pm",
+      "region": "nece",
+      "team": "",
+      "country": "DE",
+      "head": false
+    },
+    {
+      "id": "florian-achterberg",
+      "name": "Florian Achterberg",
+      "role": "sa",
+      "region": "nece",
+      "team": "",
+      "country": "DE",
+      "head": false
+    },
+    {
+      "id": "douglas-merriweather",
+      "name": "Douglas Merriweather",
+      "role": "head-ps",
+      "region": "noram",
+      "team": "",
+      "country": "US",
+      "head": true
+    },
+    {
+      "id": "curtis-halloran",
+      "name": "Curtis Halloran",
+      "role": "sales-pm",
+      "region": "noram",
+      "team": "NORAM",
+      "country": "US",
+      "head": false
+    },
+    {
+      "id": "melissa-ortega",
+      "name": "Melissa Ortega",
+      "role": "pm",
+      "region": "noram",
+      "team": "NORAM",
+      "country": "US",
+      "head": false
+    },
+    {
+      "id": "bradley-whitcomb",
+      "name": "Bradley Whitcomb",
+      "role": "pm",
+      "region": "noram",
+      "team": "NORAM",
+      "country": "US",
+      "head": false
+    },
+    {
+      "id": "trevor-lindgren",
+      "name": "Trevor Lindgren",
+      "role": "sa",
+      "region": "noram",
+      "team": "NORAM",
+      "country": "US",
+      "head": false
+    },
+    {
+      "id": "angela-kowalski",
+      "name": "Angela Kowalski",
+      "role": "sa",
+      "region": "noram",
+      "team": "NORAM",
+      "country": "US",
+      "head": false
+    },
+    {
+      "id": "teresa-villanueva",
+      "name": "Teresa Villanueva",
+      "role": "pm",
+      "region": "noram",
+      "team": "ITAD Americas",
+      "country": "US",
+      "head": false
+    },
+    {
+      "id": "hector-salgado",
+      "name": "Hector Salgado",
+      "role": "sales-pm",
+      "region": "noram",
+      "team": "ITAD Americas",
+      "country": "US",
+      "head": false
+    },
+    {
+      "id": "camila-restrepo",
+      "name": "Camila Restrepo",
+      "role": "sales-pm",
+      "region": "noram",
+      "team": "ITAD Americas",
+      "country": "US",
+      "head": false
+    },
+    {
+      "id": "luciana-prado",
+      "name": "Luciana Prado",
+      "role": "pm",
+      "region": "noram",
+      "team": "ITAD Americas",
+      "country": "US",
+      "head": false
+    },
+    {
+      "id": "renata-fuentes",
+      "name": "Renata Fuentes",
+      "role": "pm",
+      "region": "noram",
+      "team": "ITAD Americas",
+      "country": "US",
+      "head": false
+    },
+    {
+      "id": "thibault-vermeulen",
+      "name": "Thibault Vermeulen",
+      "role": "head-ps",
+      "region": "swe",
+      "team": "",
+      "country": "FR",
+      "head": true
+    },
+    {
+      "id": "clemence-aubry",
+      "name": "Clémence Aubry",
+      "role": "sales-coord",
+      "region": "swe",
+      "team": "",
+      "country": "FR",
+      "head": false
+    },
+    {
+      "id": "margaux-tessier",
+      "name": "Margaux Tessier",
+      "role": "sales-coord",
+      "region": "swe",
+      "team": "",
+      "country": "FR",
+      "head": false
+    },
+    {
+      "id": "julien-carpentier",
+      "name": "Julien Carpentier",
+      "role": "pm",
+      "region": "swe",
+      "team": "",
+      "country": "FR",
+      "head": false
+    },
+    {
+      "id": "aurelie-fontaine",
+      "name": "Aurélie Fontaine",
+      "role": "pm",
+      "region": "swe",
+      "team": "",
+      "country": "FR",
+      "head": false
+    },
+    {
+      "id": "baptiste-morel",
+      "name": "Baptiste Morel",
+      "role": "pm",
+      "region": "swe",
+      "team": "",
+      "country": "FR",
+      "head": false
+    },
+    {
+      "id": "solene-garnier",
+      "name": "Solène Garnier",
+      "role": "service-delivery",
+      "region": "swe",
+      "team": "",
+      "country": "FR",
+      "head": false
+    },
+    {
+      "id": "mathieu-roussel",
+      "name": "Mathieu Roussel",
+      "role": "service-delivery",
+      "region": "swe",
+      "team": "",
+      "country": "FR",
+      "head": false
+    },
+    {
+      "id": "karim-benali",
+      "name": "Karim Benali",
+      "role": "sa",
+      "region": "swe",
+      "team": "",
+      "country": "FR",
+      "head": false
+    },
+    {
+      "id": "yannick-le-goff",
+      "name": "Yannick Le Goff",
+      "role": "sa",
+      "region": "swe",
+      "team": "",
+      "country": "FR",
+      "head": false
+    },
+    {
+      "id": "rodrigo-albuquerque",
+      "name": "Rodrigo Albuquerque",
+      "role": "head-ps",
+      "region": "latam",
+      "team": "",
+      "country": "BR",
+      "head": true
     }
   ]
 }

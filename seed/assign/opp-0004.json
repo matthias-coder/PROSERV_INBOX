@@ -1,15 +1,17 @@
 {
+  "salesPm": "",
   "sa": "",
   "pm": "",
   "salesRegion": "",
   "serviceRegions": [],
-  "status": "closed",
+  "stage": "6",
+  "outcome": "lost",
   "nextAction": {
     "text": "",
     "who": "",
     "due": ""
   },
-  "note": "Declined by partner management.",
+  "note": "Declined: the company is a partner, not a customer.",
   "updatedAt": "2026-11-24T10:15:00+01:00",
   "updatedBy": "seed"
 }

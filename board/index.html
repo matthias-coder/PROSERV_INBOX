@@ -15,6 +15,10 @@
       <h1 class="tool-band-title" id="band-title">VAS &amp; PS · Proserv Board</h1>
       <p class="tool-stamp" id="stamp" aria-live="polite">Loading…</p>
     </div>
+    <nav class="tool-areas" aria-label="Areas">
+      <a class="tool-area" id="area-board" href="#opportunities" aria-current="page">Opportunities</a>
+      <a class="tool-area" id="area-team" href="#team">Team</a>
+    </nav>
   </div>
 </section>
 
@@ -22,6 +26,7 @@
   <p class="notice" id="demo-note" hidden></p>
   <p class="notice" id="load-note" role="status" hidden></p>
 
+  <div class="board-page" id="page-board">
   <section class="card board-filters" aria-label="Filters">
     <div class="mine-filters" id="filters">
       <div class="filters-head">
@@ -31,10 +36,10 @@
       <div class="filters-more" id="f-more">
         <div class="filters-segs">
           <div class="field">
-            <span class="label" id="l-status">Status</span>
-            <div class="seg" role="group" aria-labelledby="l-status" id="f-status">
+            <span class="label" id="l-show">Show</span>
+            <div class="seg" role="group" aria-labelledby="l-show" id="f-show">
               <button type="button" class="seg-btn" data-value="open" aria-pressed="true">Open</button>
-              <button type="button" class="seg-btn" data-value="closed" aria-pressed="false" title="Won, handed over or closed">Closed</button>
+              <button type="button" class="seg-btn" data-value="done" aria-pressed="false" title="Lost, declined or completed">Done</button>
               <button type="button" class="seg-btn" data-value="all" aria-pressed="false">All</button>
             </div>
           </div>
@@ -42,8 +47,8 @@
         <div class="filters-selects">
           <div class="field"><label class="label" for="f-service">Service region</label><select class="input" id="f-service"></select></div>
           <div class="field"><label class="label" for="f-sales">Sales region</label><select class="input" id="f-sales"></select></div>
-          <div class="field"><label class="label" for="f-sa">Solution Architect</label><select class="input" id="f-sa"></select></div>
-          <div class="field"><label class="label" for="f-pm">Project Manager</label><select class="input" id="f-pm"></select></div>
+          <div class="field"><label class="label" for="f-stage">Stage</label><select class="input" id="f-stage"></select></div>
+          <div class="field"><label class="label" for="f-person">Person</label><select class="input" id="f-person"></select></div>
         </div>
       </div>
     </div>
@@ -52,6 +57,11 @@
   <div class="board-layout" id="layout">
     <div class="board-lists" id="lists" aria-live="polite"></div>
     <aside class="card opp-panel" id="panel" aria-labelledby="panel-title" hidden></aside>
+  </div>
+  </div>
+
+  <div class="board-page" id="page-team" hidden>
+    <div id="team"></div>
   </div>
 </main>
 

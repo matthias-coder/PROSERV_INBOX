@@ -122,3 +122,15 @@ The repository is empty; there is no existing code. All files are new.
 - **Service regions:** EMEA, APAC, AMERICAS and LATAM as proposed. Sales regions are guesses until the real list arrives.
 - **Service region picker:** TITANIA's segment buttons used as an on/off set, because the design system has no multi-select control yet.
 - **Sync instruction:** `sync/prompt.md` is a draft that has not run.
+
+## Changes after the first build (2026-11-24)
+
+Matthias supplied the PS process stages and the PS organisation.
+
+- **Stages replace the status list:** the 14 stages of the PS process (with 3.1-3.2, 3.3 and 3.4 as separate steps), grouped into pre-sales (1 to 6), delivery (7 to 11) and finance (12 to 14). The phase names are the board's own.
+- **Outcome:** a separate field (open, lost or declined, completed), because the stage list has no place for a lost request.
+- **Three owners:** Sales PM, Solution Architect and Project Manager, following the roles of the organisation. An opportunity needs an owner in pre-sales without Sales PM or Solution Architect, and in delivery without Project Manager. This rule is a proposal.
+- **Regions:** the PS regions SWE, NECE, NORAM (with ITAD Americas), LATAM and AMU (APAC, MEA, UK) replace the four rate-card regions and are used for both sales and service region. The sales region is read from the mails and no longer derived from the site countries. Country tags keep the colour of their rate-card region. Which country belongs to which PS region is a guess.
+- **Team page:** the organisation by region and team, with the open opportunities per owner; a click filters the board by that person.
+- **Demo people:** 45 invented names in the shape of the organisation (roles and head count per region). No real names are stored in the repository or the database. Open positions and absences are not shown.
+- **Filters:** Show (open, done, all), service region, sales region, stage and person.

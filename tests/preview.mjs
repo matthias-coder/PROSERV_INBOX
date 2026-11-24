@@ -99,15 +99,34 @@ for (const [w, h] of [[1920, 1080], [1280, 800], [390, 844]]) {
   }
 }
 
+{ // team page
+  const page = await open(1920, 1080, "light", "#team");
+  await page.waitForSelector(".team-card");
+  check((await page.locator(".team-card").count()) === 6, "team page shows the group and five regions");
+  check((await overflow(page)) <= 0, "team page: no sideways scroll at 1920px");
+  await page.screenshot({ path: path.join(outDir, "team-1920-light.png"), fullPage: true });
+  await page.setViewportSize({ width: 390, height: 844 });
+  check((await overflow(page)) <= 0, "team page: no sideways scroll at 390px");
+  await page.setViewportSize({ width: 1600, height: 900 });
+  await page.locator("#team-florian-achterberg").click();
+  await page.waitForSelector(".opp-btn");
+  check((await page.locator(".opp-btn").count()) === 3 && (await page.evaluate(() => location.hash)) === "#opportunities", "a person's count opens their 3 open opportunities");
+  await page.context().close();
+}
+
 { // grouping of the seed and the stamp
   const page = await open(1600, 900, "light");
-  check((await page.locator(".opp-btn").count()) === 7, "open filter shows the 7 open opportunities");
-  check(/7 open · 3 need an owner/.test(await page.locator("#stamp").textContent()), "stamp counts open and unowned opportunities");
-  await page.locator('#f-status [data-value="all"]').click();
-  check((await page.locator(".opp-btn").count()) === 9, "all filter shows 9 opportunities");
-  await page.locator("#f-service").selectOption("apac");
-  check((await page.locator(".opp-btn").count()) === 3, "service region APAC shows 3 opportunities");
+  check((await page.locator(".opp-btn").count()) === 10, "open filter shows the 10 open opportunities");
+  check((await page.locator(".board-section .section-title").allTextContents()).join("|") === "Needs an owner|Pre-sales|Delivery|Finance", "sections follow owner need and the three phases");
+  check(/10 open · 4 need an owner/.test(await page.locator("#stamp").textContent()), "stamp counts open and unowned opportunities");
+  await page.locator('#f-show [data-value="all"]').click();
+  check((await page.locator(".opp-btn").count()) === 11, "all filter shows 11 opportunities");
+  await page.locator("#f-service").selectOption("amu");
+  check((await page.locator(".opp-btn").count()) === 4, "service region AMU shows 4 opportunities");
   await page.locator("#f-service").selectOption("");
+  await page.locator("#f-stage").selectOption("3.3");
+  check((await page.locator(".opp-btn").count()) === 1, "stage 3.3 shows 1 opportunity");
+  await page.locator("#f-stage").selectOption("");
   await page.locator("#f-search").fill("VC-104512");
   await page.waitForTimeout(300);
   check((await page.locator(".opp-btn").count()) === 1, "search by IFS reference finds one opportunity");
@@ -118,13 +137,13 @@ for (const [w, h] of [[1920, 1080], [1280, 800], [390, 844]]) {
   await page.locator("#row-opp-0001").click();
   check(await page.evaluate(() => document.activeElement.id === "panel-title"), "opening a row moves focus to the panel title");
   await page.locator("#p-apply").click();
-  check((await page.locator("#p-sa").inputValue()) === "priya-raghavan", "suggestion fills the empty SA field");
-  await page.locator("#p-status").selectOption("qualifying");
+  check((await page.locator("#p-sa").inputValue()) === "jun-wei-ong" && (await page.locator("#p-salespm").inputValue()) === "helen-ashdown", "suggestion fills the empty Sales PM and SA fields");
+  await page.locator("#p-stage").selectOption("2");
   await page.locator("#p-save").click();
   await page.waitForFunction(() => /Saved at/.test(document.querySelector("#panel .panel-msg.save").textContent));
   const writes = await page.evaluate(() => window.__WRITES__);
-  check(writes.length === 1 && writes[0].path === "assign/opp-0001" && writes[0].data.pm === "naomi-takeda" && writes[0].data.status === "qualifying", "save writes one assign document and nothing else");
-  check((await page.locator("#row-opp-0001 .opp-v").first().textContent()) === "Priya Raghavan", "the row shows the new SA");
+  check(writes.length === 1 && writes[0].path === "assign/opp-0001" && writes[0].data.sa === "jun-wei-ong" && writes[0].data.stage === "2", "save writes one assign document and nothing else");
+  check((await page.locator("#row-opp-0001 .opp-v").first().textContent()) === "Helen Ashdown", "the row shows the new Sales PM");
   await page.keyboard.press("Escape");
   check(await page.evaluate(() => document.activeElement.id === "row-opp-0001" && document.getElementById("panel").hidden), "Escape closes the panel and returns focus to the row");
 
@@ -143,7 +162,7 @@ for (const [w, h] of [[1920, 1080], [1280, 800], [390, 844]]) {
   await page.locator("#row-opp-0006").click();
   await page.waitForSelector("#panel-title");
   check((await page.locator("#panel input, #panel select, #panel textarea, #p-save").count()) === 0, "a viewer gets no input fields in the panel");
-  check(/Mara Lindqvist/.test(await page.locator("#panel .panel-dl").textContent()), "a viewer reads the assignment");
+  check(/Florian Achterberg/.test(await page.locator("#panel .panel-dl").textContent()), "a viewer reads the assignment");
   await page.context().close();
 }
 

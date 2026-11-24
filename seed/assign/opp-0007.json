@@ -1,9 +1,11 @@
 {
-  "sa": "tobias-arnesen",
-  "pm": "callum-ferreira",
+  "salesPm": "helen-ashdown",
+  "sa": "tariq-haddad",
+  "pm": "",
   "salesRegion": "",
   "serviceRegions": [],
-  "status": "waiting",
+  "stage": "4",
+  "outcome": "",
   "nextAction": {
     "text": "",
     "who": "",

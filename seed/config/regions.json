@@ -1,250 +1,334 @@
 {
-  "serviceRegions": [
+  "regions": [
     {
-      "id": "emea",
-      "name": "EMEA"
+      "id": "swe",
+      "name": "SWE",
+      "long": "South West Europe",
+      "teams": []
     },
     {
-      "id": "apac",
-      "name": "APAC"
+      "id": "nece",
+      "name": "NECE",
+      "long": "North, East and Central Europe",
+      "teams": []
     },
     {
-      "id": "americas",
-      "name": "AMERICAS"
-    },
-    {
-      "id": "latam",
-      "name": "LATAM"
-    }
-  ],
-  "salesRegions": [
-    {
-      "id": "dach",
-      "name": "DACH"
-    },
-    {
-      "id": "france",
-      "name": "France"
-    },
-    {
-      "id": "uki",
-      "name": "UK & Ireland"
-    },
-    {
-      "id": "south-eu",
-      "name": "Southern Europe"
-    },
-    {
-      "id": "north-eu",
-      "name": "Nordics & Benelux"
-    },
-    {
-      "id": "mea",
-      "name": "Middle East & Africa"
-    },
-    {
-      "id": "north-america",
-      "name": "North America"
+      "id": "noram",
+      "name": "NORAM",
+      "long": "NORAM & ITAD Americas",
+      "teams": [
+        "NORAM",
+        "ITAD Americas"
+      ]
     },
     {
       "id": "latam",
-      "name": "Latin America"
+      "name": "LATAM",
+      "long": "Latin America",
+      "teams": []
     },
     {
-      "id": "apac",
-      "name": "Asia Pacific"
+      "id": "amu",
+      "name": "AMU",
+      "long": "APAC, MEA, UK",
+      "teams": [
+        "APAC",
+        "MEA",
+        "UK"
+      ]
     }
   ],
   "countries": [
     {
       "code": "DE",
       "name": "Germany",
-      "serviceRegion": "emea",
-      "salesRegion": "dach"
+      "region": "nece",
+      "team": "",
+      "rateRegion": "emea"
     },
     {
       "code": "AT",
       "name": "Austria",
-      "serviceRegion": "emea",
-      "salesRegion": "dach"
+      "region": "nece",
+      "team": "",
+      "rateRegion": "emea"
     },
     {
       "code": "CH",
       "name": "Switzerland",
-      "serviceRegion": "emea",
-      "salesRegion": "dach"
-    },
-    {
-      "code": "FR",
-      "name": "France",
-      "serviceRegion": "emea",
-      "salesRegion": "france"
-    },
-    {
-      "code": "GB",
-      "name": "United Kingdom",
-      "serviceRegion": "emea",
-      "salesRegion": "uki"
-    },
-    {
-      "code": "IE",
-      "name": "Ireland",
-      "serviceRegion": "emea",
-      "salesRegion": "uki"
-    },
-    {
-      "code": "ES",
-      "name": "Spain",
-      "serviceRegion": "emea",
-      "salesRegion": "south-eu"
-    },
-    {
-      "code": "IT",
-      "name": "Italy",
-      "serviceRegion": "emea",
-      "salesRegion": "south-eu"
-    },
-    {
-      "code": "PT",
-      "name": "Portugal",
-      "serviceRegion": "emea",
-      "salesRegion": "south-eu"
+      "region": "nece",
+      "team": "",
+      "rateRegion": "emea"
     },
     {
       "code": "NL",
       "name": "Netherlands",
-      "serviceRegion": "emea",
-      "salesRegion": "north-eu"
-    },
-    {
-      "code": "BE",
-      "name": "Belgium",
-      "serviceRegion": "emea",
-      "salesRegion": "north-eu"
-    },
-    {
-      "code": "SE",
-      "name": "Sweden",
-      "serviceRegion": "emea",
-      "salesRegion": "north-eu"
-    },
-    {
-      "code": "NO",
-      "name": "Norway",
-      "serviceRegion": "emea",
-      "salesRegion": "north-eu"
-    },
-    {
-      "code": "DK",
-      "name": "Denmark",
-      "serviceRegion": "emea",
-      "salesRegion": "north-eu"
+      "region": "nece",
+      "team": "",
+      "rateRegion": "emea"
     },
     {
       "code": "PL",
       "name": "Poland",
-      "serviceRegion": "emea",
-      "salesRegion": "dach"
+      "region": "nece",
+      "team": "",
+      "rateRegion": "emea"
+    },
+    {
+      "code": "CZ",
+      "name": "Czechia",
+      "region": "nece",
+      "team": "",
+      "rateRegion": "emea"
+    },
+    {
+      "code": "SE",
+      "name": "Sweden",
+      "region": "nece",
+      "team": "",
+      "rateRegion": "emea"
+    },
+    {
+      "code": "NO",
+      "name": "Norway",
+      "region": "nece",
+      "team": "",
+      "rateRegion": "emea"
+    },
+    {
+      "code": "DK",
+      "name": "Denmark",
+      "region": "nece",
+      "team": "",
+      "rateRegion": "emea"
+    },
+    {
+      "code": "FI",
+      "name": "Finland",
+      "region": "nece",
+      "team": "",
+      "rateRegion": "emea"
+    },
+    {
+      "code": "FR",
+      "name": "France",
+      "region": "swe",
+      "team": "",
+      "rateRegion": "emea"
+    },
+    {
+      "code": "ES",
+      "name": "Spain",
+      "region": "swe",
+      "team": "",
+      "rateRegion": "emea"
+    },
+    {
+      "code": "PT",
+      "name": "Portugal",
+      "region": "swe",
+      "team": "",
+      "rateRegion": "emea"
+    },
+    {
+      "code": "IT",
+      "name": "Italy",
+      "region": "swe",
+      "team": "",
+      "rateRegion": "emea"
+    },
+    {
+      "code": "BE",
+      "name": "Belgium",
+      "region": "swe",
+      "team": "",
+      "rateRegion": "emea"
+    },
+    {
+      "code": "LU",
+      "name": "Luxembourg",
+      "region": "swe",
+      "team": "",
+      "rateRegion": "emea"
+    },
+    {
+      "code": "GB",
+      "name": "United Kingdom",
+      "region": "amu",
+      "team": "UK",
+      "rateRegion": "emea"
+    },
+    {
+      "code": "IE",
+      "name": "Ireland",
+      "region": "amu",
+      "team": "UK",
+      "rateRegion": "emea"
     },
     {
       "code": "AE",
       "name": "United Arab Emirates",
-      "serviceRegion": "emea",
-      "salesRegion": "mea"
+      "region": "amu",
+      "team": "MEA",
+      "rateRegion": "emea"
+    },
+    {
+      "code": "SA",
+      "name": "Saudi Arabia",
+      "region": "amu",
+      "team": "MEA",
+      "rateRegion": "emea"
     },
     {
       "code": "ZA",
       "name": "South Africa",
-      "serviceRegion": "emea",
-      "salesRegion": "mea"
+      "region": "amu",
+      "team": "MEA",
+      "rateRegion": "emea"
     },
     {
-      "code": "US",
-      "name": "United States",
-      "serviceRegion": "americas",
-      "salesRegion": "north-america"
-    },
-    {
-      "code": "CA",
-      "name": "Canada",
-      "serviceRegion": "americas",
-      "salesRegion": "north-america"
-    },
-    {
-      "code": "MX",
-      "name": "Mexico",
-      "serviceRegion": "latam",
-      "salesRegion": "latam"
-    },
-    {
-      "code": "BR",
-      "name": "Brazil",
-      "serviceRegion": "latam",
-      "salesRegion": "latam"
-    },
-    {
-      "code": "CL",
-      "name": "Chile",
-      "serviceRegion": "latam",
-      "salesRegion": "latam"
+      "code": "MA",
+      "name": "Morocco",
+      "region": "amu",
+      "team": "MEA",
+      "rateRegion": "emea"
     },
     {
       "code": "SG",
       "name": "Singapore",
-      "serviceRegion": "apac",
-      "salesRegion": "apac"
+      "region": "amu",
+      "team": "APAC",
+      "rateRegion": "apac"
     },
     {
       "code": "AU",
       "name": "Australia",
-      "serviceRegion": "apac",
-      "salesRegion": "apac"
+      "region": "amu",
+      "team": "APAC",
+      "rateRegion": "apac"
     },
     {
       "code": "NZ",
       "name": "New Zealand",
-      "serviceRegion": "apac",
-      "salesRegion": "apac"
+      "region": "amu",
+      "team": "APAC",
+      "rateRegion": "apac"
     },
     {
       "code": "JP",
       "name": "Japan",
-      "serviceRegion": "apac",
-      "salesRegion": "apac"
+      "region": "amu",
+      "team": "APAC",
+      "rateRegion": "apac"
     },
     {
       "code": "IN",
       "name": "India",
-      "serviceRegion": "apac",
-      "salesRegion": "apac"
+      "region": "amu",
+      "team": "APAC",
+      "rateRegion": "apac"
     },
     {
       "code": "HK",
       "name": "Hong Kong",
-      "serviceRegion": "apac",
-      "salesRegion": "apac"
+      "region": "amu",
+      "team": "APAC",
+      "rateRegion": "apac"
+    },
+    {
+      "code": "MY",
+      "name": "Malaysia",
+      "region": "amu",
+      "team": "APAC",
+      "rateRegion": "apac"
+    },
+    {
+      "code": "PK",
+      "name": "Pakistan",
+      "region": "amu",
+      "team": "APAC",
+      "rateRegion": "apac"
+    },
+    {
+      "code": "US",
+      "name": "United States",
+      "region": "noram",
+      "team": "NORAM",
+      "rateRegion": "americas"
+    },
+    {
+      "code": "CA",
+      "name": "Canada",
+      "region": "noram",
+      "team": "NORAM",
+      "rateRegion": "americas"
+    },
+    {
+      "code": "MX",
+      "name": "Mexico",
+      "region": "latam",
+      "team": "",
+      "rateRegion": "latam"
+    },
+    {
+      "code": "BR",
+      "name": "Brazil",
+      "region": "latam",
+      "team": "",
+      "rateRegion": "latam"
+    },
+    {
+      "code": "CL",
+      "name": "Chile",
+      "region": "latam",
+      "team": "",
+      "rateRegion": "latam"
+    },
+    {
+      "code": "AR",
+      "name": "Argentina",
+      "region": "latam",
+      "team": "",
+      "rateRegion": "latam"
+    },
+    {
+      "code": "CO",
+      "name": "Colombia",
+      "region": "latam",
+      "team": "",
+      "rateRegion": "latam"
     }
   ],
   "defaults": [
     {
-      "serviceRegion": "emea",
-      "sa": "mara-lindqvist",
-      "pm": "helena-voss"
+      "region": "swe",
+      "salesPm": "",
+      "sa": "karim-benali",
+      "pm": "julien-carpentier"
     },
     {
-      "serviceRegion": "apac",
-      "sa": "priya-raghavan",
-      "pm": "naomi-takeda"
+      "region": "nece",
+      "salesPm": "jonas-pfeiffer",
+      "sa": "florian-achterberg",
+      "pm": "katrin-wendel"
     },
     {
-      "serviceRegion": "americas",
-      "sa": "diego-montalvo",
-      "pm": "rachel-okafor"
+      "region": "noram",
+      "salesPm": "curtis-halloran",
+      "sa": "angela-kowalski",
+      "pm": "melissa-ortega"
     },
     {
-      "serviceRegion": "latam",
-      "sa": "diego-montalvo",
-      "pm": "rachel-okafor"
+      "region": "latam",
+      "salesPm": "hector-salgado",
+      "sa": "trevor-lindgren",
+      "pm": "teresa-villanueva"
+    },
+    {
+      "region": "amu",
+      "salesPm": "helen-ashdown",
+      "sa": "jun-wei-ong",
+      "pm": ""
     }
   ]
 }

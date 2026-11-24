@@ -1,9 +1,11 @@
 {
-  "sa": "priya-raghavan",
-  "pm": "naomi-takeda",
+  "salesPm": "zara-qureshi",
+  "sa": "jun-wei-ong",
+  "pm": "",
   "salesRegion": "",
   "serviceRegions": [],
-  "status": "waiting",
+  "stage": "3.3",
+  "outcome": "",
   "nextAction": {
     "text": "",
     "who": "",

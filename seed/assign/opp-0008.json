@@ -1,9 +1,11 @@
 {
-  "sa": "diego-montalvo",
-  "pm": "rachel-okafor",
+  "salesPm": "hector-salgado",
+  "sa": "trevor-lindgren",
+  "pm": "",
   "salesRegion": "",
   "serviceRegions": [],
-  "status": "qualifying",
+  "stage": "3.1-3.2",
+  "outcome": "",
   "nextAction": {
     "text": "",
     "who": "",

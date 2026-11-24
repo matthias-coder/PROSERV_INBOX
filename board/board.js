@@ -3,26 +3,48 @@
 (function () {
   "use strict";
 
-  var STATUS = [
-    { id: "new", label: "New", open: true },
-    { id: "qualifying", label: "Qualifying", open: true },
-    { id: "quoting", label: "Quote in progress", open: true },
-    { id: "waiting", label: "Waiting for reply", open: true },
-    { id: "won", label: "Won / handed over", open: false },
-    { id: "closed", label: "Closed", open: false }
+  /* the PS process: 14 stages in three phases; an opportunity without a stage is at "1 Creation" */
+  var PHASES = [
+    { id: "sell", label: "Pre-sales" },
+    { id: "deliver", label: "Delivery" },
+    { id: "finance", label: "Finance" }
   ];
-  var STATUS_BY_ID = {};
-  STATUS.forEach(function (s) { STATUS_BY_ID[s.id] = s; });
+  var STAGES = [
+    { id: "1", label: "Creation", phase: "sell" },
+    { id: "2", label: "Qualification", phase: "sell" },
+    { id: "3.1-3.2", label: "Request and Go/No-Go", phase: "sell" },
+    { id: "3.3", label: "Quote cycle", phase: "sell" },
+    { id: "3.4", label: "Lines, costs, margins", phase: "sell" },
+    { id: "4", label: "Negotiation", phase: "sell" },
+    { id: "5", label: "Waiting for PO", phase: "sell" },
+    { id: "6", label: "Closed", phase: "sell" },
+    { id: "7", label: "Handover", phase: "deliver" },
+    { id: "8", label: "Set-up", phase: "deliver" },
+    { id: "9", label: "Kick-off", phase: "deliver" },
+    { id: "10", label: "Delivery", phase: "deliver" },
+    { id: "11", label: "Closure", phase: "deliver" },
+    { id: "12", label: "Customer billing", phase: "finance" },
+    { id: "13", label: "Partner costs", phase: "finance" },
+    { id: "14", label: "Project P&L", phase: "finance" }
+  ];
+  var STAGE_BY_ID = {};
+  STAGES.forEach(function (s, i) { s.order = i; s.name = s.id + " " + s.label; STAGE_BY_ID[s.id] = s; });
+  var OUTCOMES = [{ id: "lost", name: "Lost or declined" }, { id: "done", name: "Completed" }];
+  var OWNERS = [
+    { key: "salesPm", role: "sales-pm", label: "Sales PM" },
+    { key: "sa", role: "sa", label: "Solution Architect" },
+    { key: "pm", role: "pm", label: "Project Manager" }
+  ];
   var ICON_GLOBE = "M12 2a10 10 0 1 0 0 20a10 10 0 1 0 0-20M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z";
   var ICON_CLOSE = "M6 6l12 12M18 6L6 18";
   var PREFS_KEY = "proserv-board-filters";
 
   var state = {
     db: null, user: null, userId: null, canWrite: null,
-    opps: {}, assign: {}, corrections: {}, people: [], regions: null, sync: null,
+    opps: {}, assign: {}, corrections: {}, people: [], roles: [], regions: null, sync: null,
     loaded: { opps: false, assign: false }, failed: false,
-    filters: { search: "", status: "open", service: "", sales: "", sa: "", pm: "" },
-    openId: null, panelDirty: false, opener: null
+    filters: { search: "", show: "open", service: "", sales: "", stage: "", person: "" },
+    openId: null, panelDirty: false, opener: null, page: "board"
   };
 
   var $ = function (id) { return document.getElementById(id); };
@@ -111,26 +133,36 @@
     for (var i = 0; i < all.length; i++) if (all[i].code === code) return all[i];
     return { code: code, name: code };
   }
-  function regionName(kind, id) {
-    var all = state.regions ? list(state.regions[kind]) : [];
+  function regions() { return state.regions ? list(state.regions.regions) : []; }
+  function regionName(id) {
+    var all = regions();
     for (var i = 0; i < all.length; i++) if (all[i].id === id) return str(all[i].name);
     return str(id);
   }
-  var REGION_CLASS = { emea: "region-emea", apac: "region-apac", americas: "region-americas", latam: "region-latam" };
+  function roleName(id) {
+    for (var i = 0; i < state.roles.length; i++) if (state.roles[i].id === id) return str(state.roles[i].name);
+    return str(id);
+  }
+  /* country tags carry the colour of their rate-card region (TITANIA), not of the PS region */
+  var RATE_CLASS = { emea: "region-emea", apac: "region-apac", americas: "region-americas", latam: "region-latam" };
 
   /* one opportunity as the board shows it: the team's values where set, otherwise what follows from the countries */
   function view(opp) {
     var a = state.assign[opp.id] || {};
     var countries = list(opp.countries).map(country);
-    var derivedService = uniq(countries.map(function (c) { return c.serviceRegion; }));
-    var derivedSales = uniq(countries.map(function (c) { return c.salesRegion; }));
-    var status = STATUS_BY_ID[a.status] ? a.status : "new";
+    var derivedService = uniq(countries.map(function (c) { return c.region; }));
+    var derivedSales = uniq(list(opp.salesRegions));
+    var stage = STAGE_BY_ID[a.stage] || STAGE_BY_ID["1"];
+    var outcome = a.outcome === "lost" || a.outcome === "done" ? a.outcome : "";
+    var open = !outcome;
+    var need = { salesPm: open && stage.phase === "sell", sa: open && stage.phase === "sell", pm: open && stage.phase === "deliver" };
     var ownNext = a.nextAction && str(a.nextAction.text).trim() ? a.nextAction : null;
     var aiNext = opp.nextAction && str(opp.nextAction.text).trim() ? opp.nextAction : null;
     return {
       opp: opp, assign: a, countries: countries,
-      status: status, open: STATUS_BY_ID[status].open,
-      sa: str(a.sa), pm: str(a.pm),
+      stage: stage, outcome: outcome, open: open, need: need,
+      salesPm: str(a.salesPm), sa: str(a.sa), pm: str(a.pm),
+      needsOwner: (need.salesPm && !str(a.salesPm)) || (need.sa && !str(a.sa)) || (need.pm && !str(a.pm)),
       serviceRegions: list(a.serviceRegions).length ? list(a.serviceRegions) : derivedService,
       salesRegions: str(a.salesRegion) ? [a.salesRegion] : derivedSales,
       derivedService: derivedService, derivedSales: derivedSales,
@@ -141,15 +173,15 @@
 
   function matches(v) {
     var f = state.filters;
-    if (f.status === "open" && !v.open) return false;
-    if (f.status === "closed" && v.open) return false;
+    if (f.show === "open" && !v.open) return false;
+    if (f.show === "done" && v.open) return false;
     if (f.service && v.serviceRegions.indexOf(f.service) < 0) return false;
     if (f.sales && v.salesRegions.indexOf(f.sales) < 0) return false;
-    if (f.sa && v.sa !== f.sa) return false;
-    if (f.pm && v.pm !== f.pm) return false;
+    if (f.stage && v.stage.id !== f.stage) return false;
+    if (f.person && v.salesPm !== f.person && v.sa !== f.person && v.pm !== f.person) return false;
     var q = f.search.trim().toLowerCase();
     if (q) {
-      var hay = [str(v.opp.title), str(v.opp.customer), personName(v.sa), personName(v.pm)]
+      var hay = [str(v.opp.title), str(v.opp.customer), personName(v.salesPm), personName(v.sa), personName(v.pm)]
         .concat(list(v.opp.refs).map(function (r) { return str(r.value); }))
         .concat(v.countries.map(function (c) { return str(c.name); }))
         .concat(list(v.opp.stakeholders).map(function (s) { return str(s.name); }))
@@ -162,20 +194,22 @@
   /* ---------- lists ---------- */
 
   function countryTag(c) {
-    var cls = REGION_CLASS[c.serviceRegion];
-    var region = c.serviceRegion ? regionName("serviceRegions", c.serviceRegion) : "";
+    var cls = RATE_CLASS[c.rateRegion];
+    var region = c.region ? regionName(c.region) + (c.team ? " " + c.team : "") : "";
     return el("span", { class: "tag cond" + (cls ? " " + cls : ""), title: region ? c.name + " · " + region : c.name, text: str(c.name) });
   }
 
   function statusTag(v) {
-    return el("span", { class: "status-tag st-" + v.status, text: STATUS_BY_ID[v.status].label });
+    if (v.outcome) return el("span", { class: "status-tag st-" + v.outcome, text: v.outcome === "lost" ? "Lost or declined" : "Completed" });
+    return el("span", { class: "status-tag st-" + v.stage.phase + (v.stage.id === "1" ? " st-first" : ""), title: "Stage " + v.stage.id, text: v.stage.name });
   }
 
-  function ownerCell(label, id, missing) {
+  function ownerCell(owner, v) {
+    var id = v[owner.key];
     var value = id ? el("span", { class: "opp-v", text: personName(id) || "Unknown person" })
-      : missing ? el("span", { class: "opp-v" }, el("span", { class: "tag warn", text: "No " + label }))
+      : v.need[owner.key] ? el("span", { class: "opp-v" }, el("span", { class: "tag warn", text: "Missing" }))
         : el("span", { class: "opp-v none", text: "–" });
-    return el("span", { class: "opp-cell" }, el("span", { class: "opp-k", text: label === "SA" ? "Solution Architect" : "Project Manager" }), value);
+    return el("span", { class: "opp-cell" }, el("span", { class: "opp-k", text: owner.label }), value);
   }
 
   function row(v) {
@@ -187,9 +221,10 @@
       v.countries.forEach(function (c) { g.appendChild(countryTag(c)); });
       tags.appendChild(g);
     }
-    if (v.salesRegions.length) {
+    if (v.serviceRegions.length || v.salesRegions.length) {
       var s = el("span", { class: "req-group" });
-      v.salesRegions.forEach(function (id) { s.appendChild(el("span", { class: "tag", title: "Sales region", text: "Sales · " + regionName("salesRegions", id) })); });
+      if (v.serviceRegions.length) s.appendChild(el("span", { class: "tag", title: "Service region", text: "Service · " + v.serviceRegions.map(regionName).join(", ") }));
+      if (v.salesRegions.length) s.appendChild(el("span", { class: "tag cond", title: "Sales region", text: "Sales · " + v.salesRegions.map(regionName).join(", ") }));
       tags.appendChild(s);
     }
     if (list(opp.refs).length) {
@@ -220,7 +255,7 @@
     var current = state.openId === opp.id;
     var btn = el("button", { type: "button", class: "opp-btn", id: "row-" + opp.id, "aria-expanded": current ? "true" : "false", "aria-controls": "panel",
       on: { click: function () { openPanel(opp.id, btn); } } },
-      main, ownerCell("SA", v.sa, v.open), ownerCell("PM", v.pm, v.open), deadline, el("span", { class: "opp-go", "aria-hidden": "true", text: "›" }));
+      main, ownerCell(OWNERS[0], v), ownerCell(OWNERS[1], v), ownerCell(OWNERS[2], v), deadline, el("span", { class: "opp-go", "aria-hidden": "true", text: "›" }));
     return el("li", { class: "request opp" + (current ? " current" : "") }, btn);
   }
 
@@ -239,6 +274,7 @@
     return str(b.opp.lastMailAt).localeCompare(str(a.opp.lastMailAt));
   }
   function byRecent(a, b) { return str(b.opp.lastMailAt).localeCompare(str(a.opp.lastMailAt)); }
+  function byStageThenRecent(a, b) { return a.stage.order !== b.stage.order ? a.stage.order - b.stage.order : byRecent(a, b); }
 
   function renderLists() {
     var lists = $("lists");
@@ -258,12 +294,15 @@
         el("p", { class: "empty", text: "No opportunity matches these filters." }),
         el("button", { type: "button", class: "btn secondary", text: "Reset filters", on: { click: resetFilters } })));
     } else {
-      var needs = shown.filter(function (v) { return v.open && (!v.sa || !v.pm); }).sort(byDeadlineThenRecent);
-      var running = shown.filter(function (v) { return v.open && v.sa && v.pm; }).sort(byRecent);
+      var needs = shown.filter(function (v) { return v.needsOwner; }).sort(byDeadlineThenRecent);
       var done = shown.filter(function (v) { return !v.open; }).sort(byRecent);
-      if (needs.length) lists.appendChild(section("Needs an owner", "No Solution Architect or no Project Manager yet. Earliest deadline first.", needs));
-      if (running.length) lists.appendChild(section("In progress", "Latest mail first.", running));
-      if (done.length) lists.appendChild(section("Closed", "Won, handed over or closed.", done));
+      if (needs.length) lists.appendChild(section("Needs an owner", "Pre-sales without Sales PM or Solution Architect, delivery without Project Manager. Earliest deadline first.", needs));
+      PHASES.forEach(function (ph) {
+        var part = shown.filter(function (v) { return v.open && !v.needsOwner && v.stage.phase === ph.id; }).sort(byStageThenRecent);
+        var first = STAGES.filter(function (s) { return s.phase === ph.id; });
+        if (part.length) lists.appendChild(section(ph.label, "Stages " + first[0].id.split("-")[0] + " to " + first[first.length - 1].id + ", by stage.", part));
+      });
+      if (done.length) lists.appendChild(section("Lost or completed", "Latest mail first.", done));
     }
     if (focusId && $(focusId)) $(focusId).focus();
     renderStamp(all);
@@ -277,7 +316,7 @@
     if (!state.loaded.opps) text = state.failed ? "Data not available" : "Loading…";
     else {
       var open = all.filter(function (v) { return v.open; });
-      var needs = open.filter(function (v) { return !v.sa || !v.pm; }).length;
+      var needs = open.filter(function (v) { return v.needsOwner; }).length;
       var parts = [demo ? "Demo data, not synced" : state.sync && state.sync.lastRunAt ? "Last sync " + ago(state.sync.lastRunAt) : "Not synced yet",
         open.length + " open", needs + (needs === 1 ? " needs an owner" : " need an owner")];
       if (state.sync && state.sync.lastRunStatus && state.sync.lastRunStatus !== "ok") parts.unshift("Last sync failed");
@@ -296,15 +335,34 @@
     if (select.value !== value) select.value = "";
   }
 
+  function fillGrouped(select, firstLabel, groups, value) {
+    select.textContent = "";
+    select.appendChild(el("option", { value: "", text: firstLabel }));
+    groups.forEach(function (g) {
+      if (!g.options.length) return;
+      var og = el("optgroup", { label: g.label });
+      g.options.forEach(function (o) { og.appendChild(el("option", { value: o.id, text: str(o.name) })); });
+      select.appendChild(og);
+    });
+    select.value = value;
+    if (select.value !== value) select.value = "";
+  }
+  function stageGroups() {
+    return PHASES.map(function (ph) { return { label: ph.label, options: STAGES.filter(function (s) { return s.phase === ph.id; }) }; });
+  }
+  function ownerGroups() {
+    return OWNERS.map(function (o) { return { label: o.label, options: peopleWithRole(o.role) }; });
+  }
+
   function renderFilters() {
-    var f = state.filters, regions = state.regions || {};
-    fillSelect($("f-service"), "All", list(regions.serviceRegions), f.service);
-    fillSelect($("f-sales"), "All", list(regions.salesRegions), f.sales);
-    fillSelect($("f-sa"), "All", peopleWithRole("SA"), f.sa);
-    fillSelect($("f-pm"), "All", peopleWithRole("PM"), f.pm);
+    var f = state.filters;
+    fillSelect($("f-service"), "All", regions(), f.service);
+    fillSelect($("f-sales"), "All", regions(), f.sales);
+    fillGrouped($("f-stage"), "All", stageGroups(), f.stage);
+    fillGrouped($("f-person"), "All", ownerGroups(), f.person);
     $("f-search").value = f.search;
-    Array.prototype.forEach.call($("f-status").querySelectorAll(".seg-btn"), function (b) {
-      b.setAttribute("aria-pressed", b.getAttribute("data-value") === f.status ? "true" : "false");
+    Array.prototype.forEach.call($("f-show").querySelectorAll(".seg-btn"), function (b) {
+      b.setAttribute("aria-pressed", b.getAttribute("data-value") === f.show ? "true" : "false");
     });
   }
 
@@ -313,11 +371,11 @@
     try {
       var saved = JSON.parse(localStorage.getItem(PREFS_KEY) || "null");
       if (saved && typeof saved === "object") Object.keys(state.filters).forEach(function (k) { if (typeof saved[k] === "string") state.filters[k] = saved[k]; });
-      if (["open", "closed", "all"].indexOf(state.filters.status) < 0) state.filters.status = "open";
+      if (["open", "done", "all"].indexOf(state.filters.show) < 0) state.filters.show = "open";
     } catch (e) { /* storage is optional */ }
   }
   function resetFilters() {
-    state.filters = { search: "", status: "open", service: "", sales: "", sa: "", pm: "" };
+    state.filters = { search: "", show: "open", service: "", sales: "", stage: "", person: "" };
     savePrefs(); renderFilters(); renderLists();
     $("f-search").focus();
   }
@@ -329,13 +387,13 @@
       clearTimeout(timer);
       timer = setTimeout(function () { savePrefs(); renderLists(); }, 150);
     });
-    [["f-service", "service"], ["f-sales", "sales"], ["f-sa", "sa"], ["f-pm", "pm"]].forEach(function (pair) {
+    [["f-service", "service"], ["f-sales", "sales"], ["f-stage", "stage"], ["f-person", "person"]].forEach(function (pair) {
       $(pair[0]).addEventListener("change", function (e) { state.filters[pair[1]] = e.target.value; savePrefs(); renderLists(); });
     });
-    $("f-status").addEventListener("click", function (e) {
+    $("f-show").addEventListener("click", function (e) {
       var b = e.target.closest(".seg-btn");
       if (!b) return;
-      state.filters.status = b.getAttribute("data-value");
+      state.filters.show = b.getAttribute("data-value");
       savePrefs(); renderFilters(); renderLists();
     });
     $("f-toggle").addEventListener("click", function () {
@@ -442,28 +500,31 @@
   function assignRead(v) {
     var dl = el("dl", { class: "panel-dl" });
     var add = function (k, val) { dl.appendChild(el("dt", { text: k })); dl.appendChild(el("dd", { text: val || "–" })); };
-    add("Solution Architect", personName(v.sa));
-    add("Project Manager", personName(v.pm));
-    add("Sales region", v.salesRegions.map(function (id) { return regionName("salesRegions", id); }).join(", "));
-    add("Service region", v.serviceRegions.map(function (id) { return regionName("serviceRegions", id); }).join(", "));
+    add("Stage", v.stage.name + (v.outcome ? " · " + (v.outcome === "lost" ? "Lost or declined" : "Completed") : ""));
+    OWNERS.forEach(function (o) { add(o.label, personName(v[o.key])); });
+    add("Sales region", v.salesRegions.map(regionName).join(", "));
+    add("Service region", v.serviceRegions.map(regionName).join(", "));
     if (v.next) add("Next action", v.next.text + (v.next.due ? " (by " + day(v.next.due) + ")" : ""));
     if (str(v.assign.note)) add("Note", str(v.assign.note));
     return part("Assignment", dl);
   }
 
   function assignForm(v) {
-    var opp = v.opp, a = v.assign, regions = state.regions || {};
+    var opp = v.opp, a = v.assign;
     var dirty = function () { state.panelDirty = true; msg.className = "panel-msg save"; msg.textContent = "Not saved yet."; };
-    var autoSales = v.derivedSales.map(function (id) { return regionName("salesRegions", id); }).join(", ");
-    var autoService = v.derivedService.map(function (id) { return regionName("serviceRegions", id); }).join(", ");
+    var autoSales = v.derivedSales.map(regionName).join(", ");
+    var autoService = v.derivedService.map(regionName).join(", ");
 
-    var fStatus = select(STATUS, v.status, "New"); fStatus.remove(0); fStatus.value = v.status;
-    var fSa = select(peopleWithRole("SA"), v.sa, "Not assigned");
-    var fPm = select(peopleWithRole("PM"), v.pm, "Not assigned");
-    var fSales = select(list(regions.salesRegions), str(a.salesRegion), autoSales ? "From countries (" + autoSales + ")" : "Not set");
+    var fStage = el("select", { class: "input" });
+    fillGrouped(fStage, "", stageGroups(), v.stage.id); fStage.remove(0); fStage.value = v.stage.id;
+    var fOutcome = select(OUTCOMES, v.outcome, "Open");
+    var fSalesPm = select(peopleWithRole("sales-pm"), v.salesPm, "Not assigned");
+    var fSa = select(peopleWithRole("sa"), v.sa, "Not assigned");
+    var fPm = select(peopleWithRole("pm"), v.pm, "Not assigned");
+    var fSales = select(regions(), str(a.salesRegion), autoSales ? "From the mails (" + autoSales + ")" : "Not set");
     var chosenService = list(a.serviceRegions).slice();
     var segService = el("div", { class: "seg multi", role: "group", "aria-labelledby": "p-service-label" });
-    list(regions.serviceRegions).forEach(function (r) {
+    regions().forEach(function (r) {
       var b = el("button", { type: "button", class: "seg-btn", id: "p-service-" + r.id, "aria-pressed": chosenService.indexOf(r.id) >= 0 ? "true" : "false", text: str(r.name) });
       b.addEventListener("click", function () {
         var i = chosenService.indexOf(r.id);
@@ -475,20 +536,22 @@
     });
     var ownNext = a.nextAction || {};
     var fNext = el("input", { class: "input", type: "text", maxlength: "200", value: str(ownNext.text), placeholder: v.next && v.next.suggested ? v.next.text : "" });
-    var fWho = select(state.people, str(ownNext.who), "Nobody yet");
+    var fWho = el("select", { class: "input" });
+    fillGrouped(fWho, "Nobody yet", ownerGroups(), str(ownNext.who));
     var fDue = el("input", { class: "input", type: "date", value: str(ownNext.due) });
     var fNote = el("textarea", { class: "input", rows: "2", maxlength: "1000" }); fNote.value = str(a.note);
     var msg = el("p", { class: "panel-msg save", role: "status" });
     if (a.updatedAt) msg.textContent = "Last changed " + stamp(a.updatedAt) + ".";
     var save = el("button", { type: "button", class: "btn secondary", id: "p-save", text: "Save changes" });
     var discard = el("button", { type: "button", class: "btn cancel", id: "p-discard", text: "Discard" });
-    [fStatus, fSa, fPm, fSales, fWho, fDue].forEach(function (c) { c.addEventListener("change", dirty); });
+    [fStage, fOutcome, fSalesPm, fSa, fPm, fSales, fWho, fDue].forEach(function (c) { c.addEventListener("change", dirty); });
     [fNext, fNote].forEach(function (c) { c.addEventListener("input", dirty); });
     discard.addEventListener("click", function () { state.panelDirty = false; renderPanel(); var b = $("p-discard"); if (b) b.focus(); });
 
     save.addEventListener("click", function () {
       var doc = {
-        sa: fSa.value, pm: fPm.value, salesRegion: fSales.value, serviceRegions: chosenService.slice(), status: fStatus.value,
+        salesPm: fSalesPm.value, sa: fSa.value, pm: fPm.value, salesRegion: fSales.value, serviceRegions: chosenService.slice(),
+        stage: fStage.value, outcome: fOutcome.value,
         nextAction: { text: fNext.value.trim(), who: fWho.value, due: fDue.value }, note: fNote.value.trim(),
         updatedAt: new Date().toISOString(), updatedBy: state.userId || ""
       };
@@ -512,13 +575,13 @@
 
     var box = part("Assignment");
     var sug = opp.suggest || {};
-    var sugSa = person(sug.sa), sugPm = person(sug.pm);
-    if ((sugSa && sug.sa !== v.sa) || (sugPm && sug.pm !== v.pm)) {
-      var line = [sugSa ? "SA " + sugSa.name : "", sugPm ? "PM " + sugPm.name : ""].filter(Boolean).join(", ");
+    var fields = { salesPm: fSalesPm, sa: fSa, pm: fPm };
+    var open = OWNERS.filter(function (o) { return person(sug[o.key]) && !v[o.key]; });
+    if (v.open && open.length) {
+      var line = open.map(function (o) { return o.label + " " + person(sug[o.key]).name; }).join(", ");
       var apply = el("button", { type: "button", class: "btn secondary", id: "p-apply", text: "Fill in suggestion" });
       apply.addEventListener("click", function () {
-        if (sugSa && !fSa.value) fSa.value = sug.sa;
-        if (sugPm && !fPm.value) fPm.value = sug.pm;
+        open.forEach(function (o) { if (!fields[o.key].value) fields[o.key].value = sug[o.key]; });
         dirty(); msg.textContent = "Suggestion filled in for empty fields. Save to keep it."; save.focus();
       });
       box.appendChild(el("div", { class: "panel-suggest" },
@@ -527,8 +590,9 @@
         el("div", null, apply)));
     }
     box.appendChild(el("div", { class: "panel-grid" },
-      field("p-sa", "Solution Architect", fSa), field("p-pm", "Project Manager", fPm),
-      field("p-status", "Status", fStatus), field("p-sales", "Sales region", fSales),
+      field("p-stage", "Stage", fStage), field("p-outcome", "Outcome", fOutcome),
+      field("p-salespm", "Sales PM", fSalesPm), field("p-sa", "Solution Architect", fSa),
+      field("p-pm", "Project Manager", fPm), field("p-sales", "Sales region", fSales),
       el("div", { class: "field span-2" }, el("span", { class: "label", id: "p-service-label", text: "Service region" }), segService,
         el("p", { class: "hint", text: autoService ? "Nothing chosen: follows the countries (" + autoService + ")." : "Nothing chosen: no service region." })),
       el("div", { class: "span-2" }, field("p-next", "Next action", fNext, v.next && v.next.suggested ? "Empty: the board shows the suggestion from the mails." : null)),
@@ -574,9 +638,86 @@
     return box;
   }
 
+  /* ---------- team page ---------- */
+
+  var ROLE_ORDER = ["vp", "head-ps", "head-sa", "head-delivery", "head-service-delivery", "sales-pm", "sales-coord", "pm", "sa", "service-delivery", "resourcing"];
+
+  function openCount(id) {
+    return Object.keys(state.opps).map(function (k) { return view(state.opps[k]); })
+      .filter(function (v) { return v.open && (v.salesPm === id || v.sa === id || v.pm === id); }).length;
+  }
+
+  function personRow(p) {
+    var c = country(str(p.country));
+    var n = openCount(p.id);
+    var owner = OWNERS.some(function (o) { return o.role === p.role; });
+    var count = !owner ? null : n ? el("button", { type: "button", class: "linkish team-count", id: "team-" + p.id, text: n + " open",
+      "aria-label": n + " open opportunities of " + str(p.name), on: { click: function () {
+        state.filters = { search: "", show: "open", service: "", sales: "", stage: "", person: p.id };
+        savePrefs(); renderFilters(); location.hash = "#opportunities"; route();
+      } } }) : el("span", { class: "team-count none", text: "0 open" });
+    return el("li", { class: "team-person" },
+      el("span", { class: "team-name" }, el("strong", { text: str(p.name) }), el("span", { class: "sub", text: roleName(p.role) })),
+      p.country ? el("span", { class: "tag cond" + (RATE_CLASS[c.rateRegion] ? " " + RATE_CLASS[c.rateRegion] : ""), text: str(c.name) }) : null,
+      count);
+  }
+
+  function teamCard(title, sub, members, teams) {
+    var card = el("section", { class: "card team-card" },
+      el("div", { class: "board-section-head" }, el("h2", { class: "section-title", text: title }), el("span", { class: "ov-count", text: String(members.length) }),
+        sub ? el("p", { class: "board-section-note", text: sub }) : null));
+    var sorted = members.slice().sort(function (a, b) {
+      var d = ROLE_ORDER.indexOf(a.role) - ROLE_ORDER.indexOf(b.role);
+      return d || str(a.name).localeCompare(str(b.name));
+    });
+    var groups = [{ label: "", people: sorted.filter(function (p) { return p.head || !p.team; }) }];
+    uniq(list(teams).concat(sorted.map(function (p) { return p.head ? "" : str(p.team); }))).forEach(function (t) {
+      groups.push({ label: t, people: sorted.filter(function (p) { return !p.head && p.team === t; }) });
+    });
+    groups.forEach(function (g) {
+      if (!g.people.length && !g.label) return;
+      if (g.label) card.appendChild(el("h3", { class: "team-h", text: g.label }));
+      if (!g.people.length) { card.appendChild(el("p", { class: "muted team-none", text: "Nobody yet." })); return; }
+      var ul = el("ul", { class: "team-list" });
+      g.people.forEach(function (p) { ul.appendChild(personRow(p)); });
+      card.appendChild(ul);
+    });
+    if (!members.length) card.appendChild(el("p", { class: "muted team-none", text: "Team to be confirmed." }));
+    return card;
+  }
+
+  function renderTeam() {
+    var box = $("team");
+    var focusId = document.activeElement && document.activeElement.id && document.activeElement.id.indexOf("team-") === 0 ? document.activeElement.id : null;
+    box.textContent = "";
+    if (!state.people.length) {
+      box.appendChild(el("section", { class: "card board-empty" }, el("p", { class: "empty muted", text: state.db ? "No people yet. Editors add them in the board's settings data." : "Loading the team…" })));
+      return;
+    }
+    var grid = el("div", { class: "team-grid" });
+    grid.appendChild(teamCard("Group", "Functions that work for every region", state.people.filter(function (p) { return p.region === "global"; }), []));
+    regions().forEach(function (r) {
+      grid.appendChild(teamCard(str(r.name), str(r.long), state.people.filter(function (p) { return p.region === r.id; }), list(r.teams)));
+    });
+    box.appendChild(grid);
+    if (focusId && $(focusId)) $(focusId).focus();
+  }
+
+  function route() {
+    var page = location.hash === "#team" ? "team" : "board";
+    state.page = page;
+    $("page-board").hidden = page !== "board";
+    $("page-team").hidden = page !== "team";
+    [["area-board", "board"], ["area-team", "team"]].forEach(function (pair) {
+      if (pair[1] === page) $(pair[0]).setAttribute("aria-current", "page"); else $(pair[0]).removeAttribute("aria-current");
+    });
+    if (page === "team") renderTeam(); else renderLists();
+  }
+
   /* ---------- data ---------- */
 
   function refresh() {
+    if (state.page === "team") renderTeam();
     renderLists();
     if (state.openId && !state.opps[state.openId]) { state.openId = null; state.panelDirty = false; renderPanel(); }
     else if (state.openId && !state.panelDirty && !document.querySelector("#panel :focus:not(.panel-title)")) renderPanel();
@@ -599,13 +740,14 @@
     db.collection("opps").onSnapshot(function (snap) { state.opps = asMap(snap); state.loaded.opps = true; settled(snap); refresh(); }, fail);
     db.collection("assign").onSnapshot(function (snap) { state.assign = asMap(snap); state.loaded.assign = true; refresh(); }, fail);
     db.collection("corrections").onSnapshot(function (snap) { state.corrections = asMap(snap); refresh(); }, function () { /* grouping notes are optional */ });
-    db.doc("config/people").onSnapshot(function (snap) { var d = snap.exists ? snap.data() : null; state.people = d ? list(d.people) : []; renderFilters(); refresh(); }, fail);
+    db.doc("config/people").onSnapshot(function (snap) { var d = snap.exists ? snap.data() : null; state.people = d ? list(d.people) : []; state.roles = d ? list(d.roles) : []; renderFilters(); refresh(); }, fail);
     db.doc("config/regions").onSnapshot(function (snap) { state.regions = snap.exists ? snap.data() : null; renderFilters(); refresh(); }, fail);
     db.doc("sync/state").onSnapshot(function (snap) { state.sync = snap.exists ? snap.data() : null; renderLists(); }, function () { /* the stamp is optional */ });
   }
 
   function start() {
     loadPrefs(); wireFilters(); renderFilters(); renderLists();
+    window.addEventListener("hashchange", route); route();
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && state.openId) { e.preventDefault(); closePanel(); }
     });

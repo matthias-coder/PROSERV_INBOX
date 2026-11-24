@@ -1,0 +1,88 @@
+{
+  "id": "opp-0011",
+  "title": "Tape library replacement, Dallas",
+  "customer": "Redwater Freight",
+  "countries": [
+    "US"
+  ],
+  "salesRegions": [
+    "noram"
+  ],
+  "refs": [
+    {
+      "type": "SF PS",
+      "value": "GWHIT20261028-244903"
+    }
+  ],
+  "summary": "Replacement of two tape libraries including media migration. The purchase order arrived on 21 November. Sales asks who will run the project.",
+  "stakeholders": [
+    {
+      "name": "Gwen Whitaker",
+      "company": "Evernex",
+      "role": "Account manager US South",
+      "side": "sales"
+    },
+    {
+      "name": "Marcus Dellinger",
+      "company": "Redwater Freight",
+      "role": "Backup administrator",
+      "side": "customer"
+    },
+    {
+      "name": "Curtis Halloran",
+      "company": "Evernex",
+      "role": "Sales PM",
+      "side": "proserv"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-10-28",
+      "text": "Request opened in Salesforce."
+    },
+    {
+      "date": "2026-11-11",
+      "text": "Quote sent."
+    },
+    {
+      "date": "2026-11-21",
+      "text": "Purchase order received."
+    },
+    {
+      "date": "2026-11-23",
+      "text": "Sales asks for the project manager."
+    }
+  ],
+  "deadline": null,
+  "nextAction": {
+    "text": "Name the project manager and plan the handover call",
+    "due": "2026-11-26"
+  },
+  "suggest": {
+    "salesPm": "curtis-halloran",
+    "sa": "angela-kowalski",
+    "pm": "melissa-ortega",
+    "reason": "Site in the United States: default owners of NORAM."
+  },
+  "mails": [
+    {
+      "date": "2026-11-23T22:10:00+01:00",
+      "from": "Gwen Whitaker",
+      "subject": "RE: Redwater tape libraries - PO received - SF ref: GWHIT20261028-244903"
+    },
+    {
+      "date": "2026-11-21T20:35:00+01:00",
+      "from": "Marcus Dellinger",
+      "subject": "RE: Redwater tape libraries - PO 4500871223"
+    },
+    {
+      "date": "2026-11-11T17:20:00+01:00",
+      "from": "Curtis Halloran",
+      "subject": "RE: Redwater tape libraries - quote - SF ref: GWHIT20261028-244903"
+    }
+  ],
+  "needsReview": false,
+  "mailCount": 3,
+  "lastMailAt": "2026-11-23T22:10:00+01:00",
+  "firstMailAt": "2026-11-11T17:20:00+01:00"
+}
