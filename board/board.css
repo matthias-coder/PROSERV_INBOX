@@ -1,0 +1,93 @@
+/* Proserv Board: what the TITANIA stylesheet (titania.css) does not already give.
+   Layout: a TITANIA work page. Filters in one row, opportunities as rows in two cards
+   (needs an owner, in progress), the detail of a row in a side panel on the right.
+   Colours, sizes and radii only through TITANIA tokens (tokens.css). */
+
+/* a standalone page: the top bar carries no picture strip */
+:root { --topbar-picture: none; --topbar-strip-pos: 0 22%; }
+.topbar .brand { cursor: default; }
+
+.board-filters { padding: 20px 28px; }
+.board-filters .mine-filters { margin-bottom: 0; }
+
+.board-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; align-items: start; }
+.board-lists { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.board-section { gap: 14px; }
+.board-section-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
+.board-section-note { margin: 0; font-size: var(--fs-small); color: var(--muted); }
+.requests { list-style: none; margin: 0; padding: 0; }
+
+/* one opportunity: a row that opens the side panel */
+.opp-btn { width: 100%; text-align: left; border: none; background: none; color: inherit; cursor: pointer; border-radius: var(--r-field);
+  display: grid; grid-template-columns: minmax(0, 1fr) 176px 176px 132px 20px; gap: 6px 16px; align-items: center; min-height: 56px; padding: 12px 16px; }
+.opp-btn:hover { background: var(--surface-2); }
+.request.opp.current { border-color: var(--fill); box-shadow: 0 0 0 1px var(--fill); }
+.opp-main { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.opp-main .req-top { align-items: center; }
+.opp .status-tag { margin-left: 0; white-space: nowrap; }
+.status-tag.st-new { background: var(--warn-soft); color: var(--warn-ink); }
+.status-tag.st-won { color: var(--ok); }
+.opp-next { font-size: var(--fs-small); color: var(--muted); overflow-wrap: anywhere; }
+.opp-next strong { color: var(--head); font-weight: 600; }
+.opp-cell { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.opp-k { font-size: 12px; font-weight: 600; color: var(--muted); }
+.opp-v { font-size: 14px; font-weight: 500; color: var(--head); overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+.opp-v.none { color: var(--muted); font-weight: 400; }
+.opp-v .tag { display: inline-block; }
+.opp-go { color: var(--muted); font-size: 18px; line-height: 1; }
+.tag.mono { font-family: var(--mono); font-weight: 600; }
+@media (max-width: 1100px) {
+  .opp-btn { grid-template-columns: repeat(3, minmax(0, 1fr)) 20px; }
+  .opp-main { grid-column: 1 / -1; }
+}
+@media (max-width: 520px) {
+  .opp-btn { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .opp-go { display: none; }
+}
+
+/* side panel: a column beside the lists from 1400 px, an overlay from the right below that */
+.opp-panel { gap: 18px; padding: 24px; overflow-y: auto; overscroll-behavior: contain; }
+@media (min-width: 1400px) {
+  .board-layout.with-aside { grid-template-columns: minmax(0, 1fr) var(--w-aside); }
+  .opp-panel { position: sticky; top: 16px; max-height: calc(100vh - 32px); }
+}
+@media (max-width: 1399px) {
+  .opp-panel { position: fixed; top: 0; right: 0; bottom: 0; z-index: 20; width: min(var(--w-aside), 100vw); border-radius: var(--r-card) 0 0 var(--r-card);
+    box-shadow: -8px 0 32px rgba(13, 42, 54, 0.28);
+    padding-top: calc(24px + env(safe-area-inset-top, 0px)); padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+    padding-right: max(24px, env(safe-area-inset-right, 0px)); }
+}
+@media (max-width: 520px) { .opp-panel { border-radius: 0; padding-left: 16px; padding-right: max(16px, env(safe-area-inset-right, 0px)); } }
+.panel-head { display: flex; align-items: flex-start; gap: 12px; }
+.panel-head-text { flex: 1 1 auto; min-width: 0; }
+.panel-title { margin: 0; font-size: 20px; font-weight: 600; color: var(--head); overflow-wrap: anywhere; }
+.panel-title:focus-visible { outline-offset: 6px; }
+.panel-sub { margin: 2px 0 0; color: var(--muted); }
+.panel-tags { display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: center; }
+.panel-text { margin: 0; overflow-wrap: anywhere; }
+.panel-part { display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--line); padding-top: 18px; min-width: 0; }
+.panel-h { margin: 0; font-size: 16px; font-weight: 600; color: var(--head); }
+.panel-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 12px; }
+.panel-grid .span-2 { grid-column: 1 / -1; }
+@media (max-width: 520px) { .panel-grid { grid-template-columns: minmax(0, 1fr); } }
+.panel-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.panel-msg { margin: 0; font-size: var(--fs-small); color: var(--muted); }
+.panel-msg.ok { color: var(--ok); font-weight: 500; }
+.panel-msg.err { color: var(--error); font-weight: 500; }
+.panel-suggest { background: var(--surface-2); border-radius: var(--r-field); padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+.panel-suggest p { margin: 0; }
+.panel-dl { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 6px 16px; margin: 0; }
+.panel-dl dt { color: var(--muted); font-size: 14px; }
+.panel-dl dd { margin: 0; color: var(--head); font-weight: 500; overflow-wrap: anywhere; }
+.panel-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.panel-list li { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 2px 12px; }
+.panel-list.people li { grid-template-columns: minmax(0, 1fr); gap: 0; }
+.panel-date { color: var(--muted); font-size: var(--fs-small); font-variant-numeric: tabular-nums; padding-top: 2px; }
+.panel-list .who { font-weight: 600; color: var(--head); }
+.panel-list .sub { color: var(--muted); font-size: var(--fs-small); overflow-wrap: anywhere; }
+.panel-list a { color: var(--front-text); overflow-wrap: anywhere; }
+.seg.multi { grid-template-columns: repeat(auto-fit, minmax(84px, 1fr)); }
+textarea.input { padding-top: 9px; padding-bottom: 9px; min-height: calc(2 * var(--control)); resize: vertical; }
+
+.board-empty { align-items: flex-start; }
+.board-empty p { margin: 0; max-width: 65ch; }

@@ -1,0 +1,87 @@
+{
+  "id": "opp-0002",
+  "title": "International deployments 2027: Geneva and Des Moines",
+  "customer": "Aldermoor Pharma",
+  "countries": [
+    "CH",
+    "US"
+  ],
+  "refs": [],
+  "summary": "Two-site deployment programme for 2027. The customer accepts delivery through subcontractors on one condition: everyone on site presents themselves as working for Evernex. Proserv confirmed a single-layer subcontractor model with consultants paid directly. No reference number yet.",
+  "stakeholders": [
+    {
+      "name": "Florian Reuter",
+      "company": "Aldermoor Pharma",
+      "role": "IT infrastructure lead",
+      "side": "customer"
+    },
+    {
+      "name": "Amadou Keller",
+      "company": "Evernex",
+      "role": "Account manager",
+      "side": "sales"
+    },
+    {
+      "name": "Beth Carroway",
+      "company": "Evernex",
+      "role": "Program manager",
+      "side": "proserv"
+    },
+    {
+      "name": "Daniel Amsel",
+      "company": "Evernex",
+      "role": "Delivery, subcontractor model",
+      "side": "proserv"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-11-19",
+      "text": "Proserv explains that both sites are served through directly contracted subcontractors."
+    },
+    {
+      "date": "2026-11-20",
+      "text": "Confirmed: single-layer subcontracting, consultants paid directly."
+    },
+    {
+      "date": "2026-11-20",
+      "text": "Customer accepts, on condition that subcontractors appear as Evernex on site."
+    }
+  ],
+  "deadline": null,
+  "nextAction": {
+    "text": "Confirm the on-site condition in writing and request a Salesforce PS number",
+    "due": "2026-11-27"
+  },
+  "suggest": {
+    "sa": "mara-lindqvist",
+    "pm": "helena-voss",
+    "reason": "Lead site Geneva: EMEA defaults. Second site in the US needs AMERICAS support."
+  },
+  "mails": [
+    {
+      "date": "2026-11-20T16:07:00+01:00",
+      "from": "Florian Reuter",
+      "subject": "RE: SERVICES GENEVA (Site 1) - DES MOINES (Site 2) - USA / INTERNATIONAL DEPLOYMENTS 2027"
+    },
+    {
+      "date": "2026-11-20T10:07:00+01:00",
+      "from": "Amadou Keller",
+      "subject": "RE: SERVICES GENEVA (Site 1) - DES MOINES (Site 2) - USA / INTERNATIONAL DEPLOYMENTS 2027"
+    },
+    {
+      "date": "2026-11-20T00:13:00+01:00",
+      "from": "Daniel Amsel",
+      "subject": "RE: SERVICES GENEVA (Site 1) - DES MOINES (Site 2) - USA / INTERNATIONAL DEPLOYMENTS 2027"
+    },
+    {
+      "date": "2026-11-19T20:01:00+01:00",
+      "from": "Beth Carroway",
+      "subject": "RE: SERVICES GENEVA (Site 1) - DES MOINES (Site 2) - USA / INTERNATIONAL DEPLOYMENTS 2027"
+    }
+  ],
+  "needsReview": false,
+  "mailCount": 4,
+  "lastMailAt": "2026-11-20T16:07:00+01:00",
+  "firstMailAt": "2026-11-19T20:01:00+01:00"
+}

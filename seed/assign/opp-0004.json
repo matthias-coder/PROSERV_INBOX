@@ -1,0 +1,15 @@
+{
+  "sa": "",
+  "pm": "",
+  "salesRegion": "",
+  "serviceRegions": [],
+  "status": "closed",
+  "nextAction": {
+    "text": "",
+    "who": "",
+    "due": ""
+  },
+  "note": "Declined by partner management.",
+  "updatedAt": "2026-11-24T10:15:00+01:00",
+  "updatedBy": "seed"
+}

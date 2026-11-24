@@ -1,0 +1,95 @@
+{
+  "id": "opp-0006",
+  "title": "Decommissioning of two server rooms, Frankfurt and Vienna",
+  "customer": "Quintara Insurance",
+  "countries": [
+    "DE",
+    "AT"
+  ],
+  "refs": [
+    {
+      "type": "SF PS",
+      "value": "LBRAN20261110-247302"
+    },
+    {
+      "type": "IFS VC",
+      "value": "VC-104512"
+    }
+  ],
+  "summary": "Decommissioning with certified data erasure and asset buyback for about 180 servers and 12 storage systems in two rooms. Site surveys are done; the customer wants one price per site and a weekend option for Vienna.",
+  "stakeholders": [
+    {
+      "name": "Lena Brandt",
+      "company": "Evernex",
+      "role": "Account manager DACH",
+      "side": "sales"
+    },
+    {
+      "name": "Georg Haidinger",
+      "company": "Quintara Insurance",
+      "role": "Head of data centre operations",
+      "side": "customer"
+    },
+    {
+      "name": "Mara Lindqvist",
+      "company": "Evernex",
+      "role": "Solution architect",
+      "side": "proserv"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-11-10",
+      "text": "Request opened in Salesforce."
+    },
+    {
+      "date": "2026-11-13",
+      "text": "Site survey Frankfurt."
+    },
+    {
+      "date": "2026-11-18",
+      "text": "Site survey Vienna; weekend work requested as an option."
+    },
+    {
+      "date": "2026-12-04",
+      "text": "Customer expects the offer."
+    }
+  ],
+  "deadline": "2026-12-04",
+  "deadlineNote": "Offer date agreed with the customer",
+  "nextAction": {
+    "text": "Finish the effort estimate for Vienna including the weekend option",
+    "due": "2026-11-27"
+  },
+  "suggest": {
+    "sa": "mara-lindqvist",
+    "pm": "helena-voss",
+    "reason": "Germany and Austria: EMEA defaults from the rule table."
+  },
+  "mails": [
+    {
+      "date": "2026-11-21T14:12:00+01:00",
+      "from": "Lena Brandt",
+      "subject": "AW: Quintara Decom FRA/VIE - SF ref: LBRAN20261110-247302"
+    },
+    {
+      "date": "2026-11-18T17:40:00+01:00",
+      "from": "Georg Haidinger",
+      "subject": "AW: Quintara Decom FRA/VIE - Begehung Wien"
+    },
+    {
+      "date": "2026-11-13T11:02:00+01:00",
+      "from": "Mara Lindqvist",
+      "subject": "RE: Quintara Decom FRA/VIE - survey notes Frankfurt"
+    },
+    {
+      "date": "2026-11-10T09:15:00+01:00",
+      "from": "Lena Brandt",
+      "subject": "Quintara Decom FRA/VIE - SF ref: LBRAN20261110-247302"
+    }
+  ],
+  "needsReview": false,
+  "mailCount": 4,
+  "lastMailAt": "2026-11-21T14:12:00+01:00",
+  "firstMailAt": "2026-11-10T09:15:00+01:00"
+}

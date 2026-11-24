@@ -1,0 +1,66 @@
+{
+  "id": "opp-0004",
+  "title": "Wi-Fi survey request, Rouen",
+  "customer": "Plumeria Networks (partner)",
+  "countries": [
+    "FR"
+  ],
+  "refs": [],
+  "summary": "A partner that normally supports Evernex with Wi-Fi surveys asked Evernex for help at a site in Rouen. Sales declined: the company is registered as a partner, not as a customer, and would have to be set up as a customer first.",
+  "stakeholders": [
+    {
+      "name": "Oren Petrakis",
+      "company": "Plumeria Networks",
+      "role": "Business development manager",
+      "side": "partner"
+    },
+    {
+      "name": "Valentin Elias",
+      "company": "Evernex",
+      "role": "Partner management",
+      "side": "sales"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-11-19",
+      "text": "Partner management takes the request and contacts the partner."
+    },
+    {
+      "date": "2026-11-23",
+      "text": "Partner asks again whether there is interest."
+    },
+    {
+      "date": "2026-11-23",
+      "text": "Declined for now: registration as a customer would be needed first."
+    }
+  ],
+  "deadline": null,
+  "nextAction": null,
+  "suggest": {
+    "sa": "mara-lindqvist",
+    "pm": "helena-voss",
+    "reason": "Site in France: EMEA defaults. The request was declined, so no assignment may be needed."
+  },
+  "mails": [
+    {
+      "date": "2026-11-23T10:43:00+01:00",
+      "from": "Valentin Elias",
+      "subject": "RE: Service request 76100 Rouen FR"
+    },
+    {
+      "date": "2026-11-23T10:24:00+01:00",
+      "from": "Oren Petrakis",
+      "subject": "RE: Service request 76100 Rouen FR"
+    },
+    {
+      "date": "2026-11-19T15:30:00+01:00",
+      "from": "Valentin Elias",
+      "subject": "RE: Service request 76100 Rouen FR"
+    }
+  ],
+  "needsReview": false,
+  "mailCount": 3,
+  "lastMailAt": "2026-11-23T10:43:00+01:00",
+  "firstMailAt": "2026-11-19T15:30:00+01:00"
+}

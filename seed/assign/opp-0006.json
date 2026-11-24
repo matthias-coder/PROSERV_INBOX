@@ -1,0 +1,15 @@
+{
+  "sa": "mara-lindqvist",
+  "pm": "helena-voss",
+  "salesRegion": "",
+  "serviceRegions": [],
+  "status": "quoting",
+  "nextAction": {
+    "text": "Finish the effort estimate for Vienna including the weekend option",
+    "who": "mara-lindqvist",
+    "due": "2026-11-27"
+  },
+  "note": "",
+  "updatedAt": "2026-11-24T10:15:00+01:00",
+  "updatedBy": "seed"
+}

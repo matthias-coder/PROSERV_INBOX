@@ -1,0 +1,250 @@
+{
+  "serviceRegions": [
+    {
+      "id": "emea",
+      "name": "EMEA"
+    },
+    {
+      "id": "apac",
+      "name": "APAC"
+    },
+    {
+      "id": "americas",
+      "name": "AMERICAS"
+    },
+    {
+      "id": "latam",
+      "name": "LATAM"
+    }
+  ],
+  "salesRegions": [
+    {
+      "id": "dach",
+      "name": "DACH"
+    },
+    {
+      "id": "france",
+      "name": "France"
+    },
+    {
+      "id": "uki",
+      "name": "UK & Ireland"
+    },
+    {
+      "id": "south-eu",
+      "name": "Southern Europe"
+    },
+    {
+      "id": "north-eu",
+      "name": "Nordics & Benelux"
+    },
+    {
+      "id": "mea",
+      "name": "Middle East & Africa"
+    },
+    {
+      "id": "north-america",
+      "name": "North America"
+    },
+    {
+      "id": "latam",
+      "name": "Latin America"
+    },
+    {
+      "id": "apac",
+      "name": "Asia Pacific"
+    }
+  ],
+  "countries": [
+    {
+      "code": "DE",
+      "name": "Germany",
+      "serviceRegion": "emea",
+      "salesRegion": "dach"
+    },
+    {
+      "code": "AT",
+      "name": "Austria",
+      "serviceRegion": "emea",
+      "salesRegion": "dach"
+    },
+    {
+      "code": "CH",
+      "name": "Switzerland",
+      "serviceRegion": "emea",
+      "salesRegion": "dach"
+    },
+    {
+      "code": "FR",
+      "name": "France",
+      "serviceRegion": "emea",
+      "salesRegion": "france"
+    },
+    {
+      "code": "GB",
+      "name": "United Kingdom",
+      "serviceRegion": "emea",
+      "salesRegion": "uki"
+    },
+    {
+      "code": "IE",
+      "name": "Ireland",
+      "serviceRegion": "emea",
+      "salesRegion": "uki"
+    },
+    {
+      "code": "ES",
+      "name": "Spain",
+      "serviceRegion": "emea",
+      "salesRegion": "south-eu"
+    },
+    {
+      "code": "IT",
+      "name": "Italy",
+      "serviceRegion": "emea",
+      "salesRegion": "south-eu"
+    },
+    {
+      "code": "PT",
+      "name": "Portugal",
+      "serviceRegion": "emea",
+      "salesRegion": "south-eu"
+    },
+    {
+      "code": "NL",
+      "name": "Netherlands",
+      "serviceRegion": "emea",
+      "salesRegion": "north-eu"
+    },
+    {
+      "code": "BE",
+      "name": "Belgium",
+      "serviceRegion": "emea",
+      "salesRegion": "north-eu"
+    },
+    {
+      "code": "SE",
+      "name": "Sweden",
+      "serviceRegion": "emea",
+      "salesRegion": "north-eu"
+    },
+    {
+      "code": "NO",
+      "name": "Norway",
+      "serviceRegion": "emea",
+      "salesRegion": "north-eu"
+    },
+    {
+      "code": "DK",
+      "name": "Denmark",
+      "serviceRegion": "emea",
+      "salesRegion": "north-eu"
+    },
+    {
+      "code": "PL",
+      "name": "Poland",
+      "serviceRegion": "emea",
+      "salesRegion": "dach"
+    },
+    {
+      "code": "AE",
+      "name": "United Arab Emirates",
+      "serviceRegion": "emea",
+      "salesRegion": "mea"
+    },
+    {
+      "code": "ZA",
+      "name": "South Africa",
+      "serviceRegion": "emea",
+      "salesRegion": "mea"
+    },
+    {
+      "code": "US",
+      "name": "United States",
+      "serviceRegion": "americas",
+      "salesRegion": "north-america"
+    },
+    {
+      "code": "CA",
+      "name": "Canada",
+      "serviceRegion": "americas",
+      "salesRegion": "north-america"
+    },
+    {
+      "code": "MX",
+      "name": "Mexico",
+      "serviceRegion": "latam",
+      "salesRegion": "latam"
+    },
+    {
+      "code": "BR",
+      "name": "Brazil",
+      "serviceRegion": "latam",
+      "salesRegion": "latam"
+    },
+    {
+      "code": "CL",
+      "name": "Chile",
+      "serviceRegion": "latam",
+      "salesRegion": "latam"
+    },
+    {
+      "code": "SG",
+      "name": "Singapore",
+      "serviceRegion": "apac",
+      "salesRegion": "apac"
+    },
+    {
+      "code": "AU",
+      "name": "Australia",
+      "serviceRegion": "apac",
+      "salesRegion": "apac"
+    },
+    {
+      "code": "NZ",
+      "name": "New Zealand",
+      "serviceRegion": "apac",
+      "salesRegion": "apac"
+    },
+    {
+      "code": "JP",
+      "name": "Japan",
+      "serviceRegion": "apac",
+      "salesRegion": "apac"
+    },
+    {
+      "code": "IN",
+      "name": "India",
+      "serviceRegion": "apac",
+      "salesRegion": "apac"
+    },
+    {
+      "code": "HK",
+      "name": "Hong Kong",
+      "serviceRegion": "apac",
+      "salesRegion": "apac"
+    }
+  ],
+  "defaults": [
+    {
+      "serviceRegion": "emea",
+      "sa": "mara-lindqvist",
+      "pm": "helena-voss"
+    },
+    {
+      "serviceRegion": "apac",
+      "sa": "priya-raghavan",
+      "pm": "naomi-takeda"
+    },
+    {
+      "serviceRegion": "americas",
+      "sa": "diego-montalvo",
+      "pm": "rachel-okafor"
+    },
+    {
+      "serviceRegion": "latam",
+      "sa": "diego-montalvo",
+      "pm": "rachel-okafor"
+    }
+  ]
+}

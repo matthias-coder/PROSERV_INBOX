@@ -1,0 +1,77 @@
+{
+  "id": "opp-0008",
+  "title": "Storage migration, Sao Paulo and Santiago",
+  "customer": "Solvik Energy",
+  "countries": [
+    "BR",
+    "CL"
+  ],
+  "refs": [
+    {
+      "type": "SF PS",
+      "value": "RCAST20261112-247744"
+    }
+  ],
+  "summary": "Migration of two storage systems to new arrays, with Portuguese- and Spanish-speaking engineers on site. The scope call has taken place. Two threads were merged here because both carry the same Salesforce reference; one of them is about a licence question and may belong to a separate request.",
+  "stakeholders": [
+    {
+      "name": "Rafael Castanho",
+      "company": "Evernex",
+      "role": "Account manager Latin America",
+      "side": "sales"
+    },
+    {
+      "name": "Marina Oyarzun",
+      "company": "Solvik Energy",
+      "role": "Storage team lead",
+      "side": "customer"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-11-12",
+      "text": "Request opened in Salesforce."
+    },
+    {
+      "date": "2026-11-19",
+      "text": "Scope call with the customer."
+    },
+    {
+      "date": "2026-11-23",
+      "text": "Licence question raised in a second thread with the same reference."
+    }
+  ],
+  "deadline": "2026-12-01",
+  "deadlineNote": "Customer asked for a budget figure by this date",
+  "nextAction": {
+    "text": "Write the migration approach and the budget figure",
+    "due": "2026-11-28"
+  },
+  "suggest": {
+    "sa": "diego-montalvo",
+    "pm": "rachel-okafor",
+    "reason": "Brazil and Chile: LATAM defaults from the rule table."
+  },
+  "mails": [
+    {
+      "date": "2026-11-23T19:04:00+01:00",
+      "from": "Rafael Castanho",
+      "subject": "RE: Solvik - licence transfer question - SF ref: RCAST20261112-247744"
+    },
+    {
+      "date": "2026-11-19T21:30:00+01:00",
+      "from": "Marina Oyarzun",
+      "subject": "RE: Solvik storage migration - scope call notes"
+    },
+    {
+      "date": "2026-11-12T18:11:00+01:00",
+      "from": "Rafael Castanho",
+      "subject": "Solvik storage migration - SF ref: RCAST20261112-247744"
+    }
+  ],
+  "needsReview": true,
+  "reviewNote": "Two threads share one reference; the licence question may be a separate request.",
+  "mailCount": 3,
+  "lastMailAt": "2026-11-23T19:04:00+01:00",
+  "firstMailAt": "2026-11-12T18:11:00+01:00"
+}

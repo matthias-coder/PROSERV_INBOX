@@ -1,0 +1,85 @@
+{
+  "id": "opp-0001",
+  "title": "RFQ 0008114502: rack and stack, Singapore data hall",
+  "customer": "Halvorsen Data Centres",
+  "countries": [
+    "SG"
+  ],
+  "refs": [
+    {
+      "type": "SF PS",
+      "value": "JMERC20261124-250611"
+    }
+  ],
+  "summary": "Sales asks Proserv to quote a rack-and-stack RFQ for a new data hall in Singapore. The regular contact is out of office, so the request came to the shared mailbox. The attached Word document with the scope cannot be opened; a readable copy has been requested.",
+  "stakeholders": [
+    {
+      "name": "Jonas Mercier",
+      "company": "Evernex",
+      "role": "Business Development, requester",
+      "side": "sales"
+    },
+    {
+      "name": "Ines Calloway",
+      "company": "Evernex",
+      "role": "Proserv, asked for a readable file",
+      "side": "proserv"
+    },
+    {
+      "name": "Wei Ling Tan",
+      "company": "Halvorsen Data Centres",
+      "role": "Procurement",
+      "side": "customer"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-11-24",
+      "text": "RFQ forwarded to Proserv, marked urgent."
+    },
+    {
+      "date": "2026-11-24",
+      "text": "Salesforce PS reference added to the thread."
+    },
+    {
+      "date": "2026-11-24",
+      "text": "Word document reported as unreadable; new copy requested."
+    },
+    {
+      "date": "2026-11-27",
+      "text": "Deadline for submission."
+    }
+  ],
+  "deadline": "2026-11-27",
+  "deadlineNote": "Submission deadline named by Sales",
+  "nextAction": {
+    "text": "Get a readable copy of the RFQ document, then decide who quotes",
+    "due": "2026-11-25"
+  },
+  "suggest": {
+    "sa": "priya-raghavan",
+    "pm": "naomi-takeda",
+    "reason": "Site in Singapore: APAC defaults from the rule table."
+  },
+  "mails": [
+    {
+      "date": "2026-11-24T10:05:00+01:00",
+      "from": "Ines Calloway",
+      "subject": "FW: HDC - Request for Quotation - 0008114502 - SF ref: JMERC20261124-250611"
+    },
+    {
+      "date": "2026-11-24T06:45:00+01:00",
+      "from": "Jonas Mercier",
+      "subject": "RE: HDC - Request for Quotation - 0008114502 - SF ref: JMERC20261124-250611"
+    },
+    {
+      "date": "2026-11-24T06:27:00+01:00",
+      "from": "Jonas Mercier",
+      "subject": "RE: HDC - Request for Quotation - 0008114502"
+    }
+  ],
+  "needsReview": false,
+  "mailCount": 3,
+  "lastMailAt": "2026-11-24T10:05:00+01:00",
+  "firstMailAt": "2026-11-24T06:27:00+01:00"
+}

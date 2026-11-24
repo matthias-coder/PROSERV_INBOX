@@ -1,0 +1,58 @@
+<title>Proserv Board</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="titania.css">
+<link rel="stylesheet" href="board.css">
+
+<header class="topbar">
+  <span class="brand">TITANIA</span>
+  <div class="spacer"></div>
+</header>
+<section class="tool-band" aria-labelledby="band-title">
+  <div class="tool-band-in">
+    <div class="tool-band-head">
+      <h1 class="tool-band-title" id="band-title">VAS &amp; PS · Proserv Board</h1>
+      <p class="tool-stamp" id="stamp" aria-live="polite">Loading…</p>
+    </div>
+  </div>
+</section>
+
+<main class="workbench work" id="main">
+  <p class="notice" id="demo-note" hidden></p>
+  <p class="notice" id="load-note" role="status" hidden></p>
+
+  <section class="card board-filters" aria-label="Filters">
+    <div class="mine-filters" id="filters">
+      <div class="filters-head">
+        <input class="input" id="f-search" type="search" placeholder="Search title, customer, reference, person" aria-label="Search opportunities" autocomplete="off">
+        <button type="button" class="btn secondary filters-toggle" id="f-toggle" aria-expanded="false" aria-controls="f-more">Filters</button>
+      </div>
+      <div class="filters-more" id="f-more">
+        <div class="filters-segs">
+          <div class="field">
+            <span class="label" id="l-status">Status</span>
+            <div class="seg" role="group" aria-labelledby="l-status" id="f-status">
+              <button type="button" class="seg-btn" data-value="open" aria-pressed="true">Open</button>
+              <button type="button" class="seg-btn" data-value="closed" aria-pressed="false" title="Won, handed over or closed">Closed</button>
+              <button type="button" class="seg-btn" data-value="all" aria-pressed="false">All</button>
+            </div>
+          </div>
+        </div>
+        <div class="filters-selects">
+          <div class="field"><label class="label" for="f-service">Service region</label><select class="input" id="f-service"></select></div>
+          <div class="field"><label class="label" for="f-sales">Sales region</label><select class="input" id="f-sales"></select></div>
+          <div class="field"><label class="label" for="f-sa">Solution Architect</label><select class="input" id="f-sa"></select></div>
+          <div class="field"><label class="label" for="f-pm">Project Manager</label><select class="input" id="f-pm"></select></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="board-layout" id="layout">
+    <div class="board-lists" id="lists" aria-live="polite"></div>
+    <aside class="card opp-panel" id="panel" aria-labelledby="panel-title" hidden></aside>
+  </div>
+</main>
+
+<script src="board.js"></script>

@@ -1,0 +1,15 @@
+{
+  "sa": "priya-raghavan",
+  "pm": "naomi-takeda",
+  "salesRegion": "",
+  "serviceRegions": [],
+  "status": "waiting",
+  "nextAction": {
+    "text": "",
+    "who": "",
+    "due": ""
+  },
+  "note": "",
+  "updatedAt": "2026-11-24T10:15:00+01:00",
+  "updatedBy": "seed"
+}

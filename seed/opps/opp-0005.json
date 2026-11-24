@@ -1,0 +1,60 @@
+{
+  "id": "opp-0005",
+  "title": "Hardware and facilities opportunity, indicative price",
+  "customer": "Norvane Bank",
+  "countries": [
+    "IN"
+  ],
+  "refs": [
+    {
+      "type": "SF PS",
+      "value": "DSHAN20261117-248690"
+    }
+  ],
+  "summary": "Sales received an indicative price and thanked Proserv. The customer can be asked for whatever is still missing to turn the indication into a commercial offer.",
+  "stakeholders": [
+    {
+      "name": "Devika Shankar",
+      "company": "Evernex",
+      "role": "Sales director",
+      "side": "sales"
+    },
+    {
+      "name": "Sara Whitlow",
+      "company": "Evernex",
+      "role": "Proserv, sent the indicative price",
+      "side": "proserv"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-11-17",
+      "text": "Request opened with a Salesforce PS reference."
+    },
+    {
+      "date": "2026-11-20",
+      "text": "Indicative price acknowledged; Sales offers to collect missing details."
+    }
+  ],
+  "deadline": null,
+  "nextAction": {
+    "text": "Send Sales the list of details needed for a firm offer",
+    "due": "2026-11-26"
+  },
+  "suggest": {
+    "sa": "priya-raghavan",
+    "pm": "naomi-takeda",
+    "reason": "Customer site in India: APAC defaults from the rule table."
+  },
+  "mails": [
+    {
+      "date": "2026-11-20T06:25:00+01:00",
+      "from": "Devika Shankar",
+      "subject": "Re: PS # DSHAN20261117-248690 : H&F opp - Norvane"
+    }
+  ],
+  "needsReview": false,
+  "mailCount": 1,
+  "lastMailAt": "2026-11-20T06:25:00+01:00",
+  "firstMailAt": "2026-11-20T06:25:00+01:00"
+}

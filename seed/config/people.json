@@ -1,0 +1,52 @@
+{
+  "people": [
+    {
+      "id": "mara-lindqvist",
+      "name": "Mara Lindqvist",
+      "role": "SA",
+      "region": "emea"
+    },
+    {
+      "id": "tobias-arnesen",
+      "name": "Tobias Arnesen",
+      "role": "SA",
+      "region": "emea"
+    },
+    {
+      "id": "priya-raghavan",
+      "name": "Priya Raghavan",
+      "role": "SA",
+      "region": "apac"
+    },
+    {
+      "id": "diego-montalvo",
+      "name": "Diego Montalvo",
+      "role": "SA",
+      "region": "americas"
+    },
+    {
+      "id": "helena-voss",
+      "name": "Helena Voss",
+      "role": "PM",
+      "region": "emea"
+    },
+    {
+      "id": "callum-ferreira",
+      "name": "Callum Ferreira",
+      "role": "PM",
+      "region": "emea"
+    },
+    {
+      "id": "naomi-takeda",
+      "name": "Naomi Takeda",
+      "role": "PM",
+      "region": "apac"
+    },
+    {
+      "id": "rachel-okafor",
+      "name": "Rachel Okafor",
+      "role": "PM",
+      "region": "americas"
+    }
+  ]
+}

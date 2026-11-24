@@ -1,6 +1,6 @@
 # Proserv Board: design
 
-Status: approved by Matthias on 2026-11-24. Nothing is built before step 0 (feasibility test) has passed.
+Status: approved by Matthias on 2026-11-24. On the same day Matthias decided to build the board first, with invented demo data and without the mailbox connection; the feasibility test (step 0) and the sync follow once Microsoft 365 is connected. Changes made while building are listed at the end.
 
 ## Context
 
@@ -50,7 +50,7 @@ AI fields and team fields live in separate documents, so the sync never overwrit
 | `config/people`, `config/regions` | Editors | master data and the rule table country → region → default SA/PM |
 | `sync/state` | sync only | last run, result, counters |
 
-Access rules: root read `view`, write `admin`; `assign` and `corrections` write `interact`.
+Access rules: the root keeps the defaults (read `view`, write `interact`); `opps`, `threads`, `config` and `sync` raise write to `admin`. The effect is the same as locking the root and opening `assign` and `corrections`, but the page can then ask the platform whether the viewer may write shared data.
 
 Status values (my proposal): New, Qualifying, Quote in progress, Waiting for reply, Won / handed over, Closed.
 
@@ -112,3 +112,13 @@ The repository is empty; there is no existing code. All files are new.
 - **Rights:** with `ArtifactData` and `as_level: "view"` nothing is writable; with `"interact"` only `assign` and `corrections`, not `opps` or `config`.
 - **Rendering:** render the page locally with Playwright (capability stub), light and dark, at 1920px, laptop width and 390px without sideways scroll; text contrast 4.5:1.
 - **Empty state and sync failure:** the board shows "No data yet", and the age of the last run is clearly visible.
+
+## Changes made while building (2026-11-24)
+
+- **Order:** the board was built before step 0, on demo data with invented people, customers and mails. The board shows a notice while `sync/state.mode` is `demo`.
+- **No "Mine" filter:** the people in `config/people` are not linked to claude.ai accounts, so the page cannot know who the viewer is. The SA and PM filters do the same job and are remembered per browser.
+- **Regions follow the countries:** sales and service region are derived from an opportunity's countries through `config/regions` and can be overridden by hand. The AI suggestion therefore covers only SA and PM.
+- **Sections:** "Needs an owner" (open, no SA or no PM), "In progress" and "Closed", instead of "Unassigned" and "Assigned".
+- **Service regions:** EMEA, APAC, AMERICAS and LATAM as proposed. Sales regions are guesses until the real list arrives.
+- **Service region picker:** TITANIA's segment buttons used as an on/off set, because the design system has no multi-select control yet.
+- **Sync instruction:** `sync/prompt.md` is a draft that has not run.

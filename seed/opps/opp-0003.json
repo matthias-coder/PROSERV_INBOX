@@ -1,0 +1,92 @@
+{
+  "id": "opp-0003",
+  "title": "Break-fix with short SLAs in Australia and New Zealand",
+  "customer": "Brightwater Logistics",
+  "countries": [
+    "AU",
+    "NZ"
+  ],
+  "refs": [],
+  "summary": "Opportunity with short on-site SLAs. The usual partners are not a fit, so a local partner is needed. The regional director pointed to two local contacts; one was reached, one has not answered. A third partner will be tried.",
+  "stakeholders": [
+    {
+      "name": "Scott Calder",
+      "company": "Evernex",
+      "role": "Sales ANZ",
+      "side": "sales"
+    },
+    {
+      "name": "Alexis Duval",
+      "company": "Evernex",
+      "role": "Regional director ANZ and South East Asia",
+      "side": "sales"
+    },
+    {
+      "name": "Beth Carroway",
+      "company": "Evernex",
+      "role": "Program manager",
+      "side": "proserv"
+    },
+    {
+      "name": "Yann Lefort",
+      "company": "Evernex",
+      "role": "Proserv, out this week",
+      "side": "proserv"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-11-19",
+      "text": "Proserv asks for local partner recommendations: the go-to partners cannot meet the SLAs."
+    },
+    {
+      "date": "2026-11-20",
+      "text": "A further partner is suggested as best placed."
+    },
+    {
+      "date": "2026-11-20",
+      "text": "One local contact reached, one silent; a third partner will be tried."
+    }
+  ],
+  "deadline": null,
+  "nextAction": {
+    "text": "Follow up with Sales ANZ on which local partner answered",
+    "due": "2026-11-26"
+  },
+  "suggest": {
+    "sa": "priya-raghavan",
+    "pm": "naomi-takeda",
+    "reason": "Australia and New Zealand: APAC defaults from the rule table."
+  },
+  "mails": [
+    {
+      "date": "2026-11-20T09:05:00+01:00",
+      "from": "Scott Calder",
+      "subject": "RE: Opportunity in Aus and NZ"
+    },
+    {
+      "date": "2026-11-20T02:49:00+01:00",
+      "from": "Alexis Duval",
+      "subject": "RE: Opportunity in Aus and NZ"
+    },
+    {
+      "date": "2026-11-20T00:06:00+01:00",
+      "from": "Beth Carroway",
+      "subject": "RE: Opportunity in Aus and NZ"
+    },
+    {
+      "date": "2026-11-19T16:35:00+01:00",
+      "from": "Yann Lefort",
+      "subject": "RE: Opportunity in Aus and NZ"
+    },
+    {
+      "date": "2026-11-19T16:25:00+01:00",
+      "from": "Beth Carroway",
+      "subject": "RE: Opportunity in Aus and NZ"
+    }
+  ],
+  "needsReview": false,
+  "mailCount": 5,
+  "lastMailAt": "2026-11-20T09:05:00+01:00",
+  "firstMailAt": "2026-11-19T16:25:00+01:00"
+}

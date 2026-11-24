@@ -1,0 +1,79 @@
+{
+  "id": "opp-0009",
+  "title": "Rollout of 600 branch routers, staging and installation",
+  "customer": "Kestrel Mobility",
+  "countries": [
+    "DE",
+    "NL",
+    "BE",
+    "PL"
+  ],
+  "refs": [
+    {
+      "type": "SF PS",
+      "value": "LBRAN20261002-241960"
+    }
+  ],
+  "summary": "Staging in the warehouse and on-site installation of 600 routers in four countries. The customer signed in mid November; the project has been handed over to delivery.",
+  "stakeholders": [
+    {
+      "name": "Lena Brandt",
+      "company": "Evernex",
+      "role": "Account manager DACH",
+      "side": "sales"
+    },
+    {
+      "name": "Pieter Vandenberg",
+      "company": "Kestrel Mobility",
+      "role": "Program lead",
+      "side": "customer"
+    },
+    {
+      "name": "Callum Ferreira",
+      "company": "Evernex",
+      "role": "Project manager",
+      "side": "proserv"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-10-02",
+      "text": "Request opened in Salesforce."
+    },
+    {
+      "date": "2026-10-23",
+      "text": "Offer sent."
+    },
+    {
+      "date": "2026-11-16",
+      "text": "Customer signed."
+    },
+    {
+      "date": "2026-11-18",
+      "text": "Handover to delivery."
+    }
+  ],
+  "deadline": null,
+  "nextAction": null,
+  "suggest": {
+    "sa": "mara-lindqvist",
+    "pm": "helena-voss",
+    "reason": "Lead country Germany: EMEA defaults from the rule table."
+  },
+  "mails": [
+    {
+      "date": "2026-11-18T09:20:00+01:00",
+      "from": "Callum Ferreira",
+      "subject": "RE: Kestrel router rollout - handover - SF ref: LBRAN20261002-241960"
+    },
+    {
+      "date": "2026-11-16T13:55:00+01:00",
+      "from": "Lena Brandt",
+      "subject": "RE: Kestrel router rollout - signed - SF ref: LBRAN20261002-241960"
+    }
+  ],
+  "needsReview": false,
+  "mailCount": 2,
+  "lastMailAt": "2026-11-18T09:20:00+01:00",
+  "firstMailAt": "2026-11-16T13:55:00+01:00"
+}

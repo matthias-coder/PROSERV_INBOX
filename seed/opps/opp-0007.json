@@ -1,0 +1,81 @@
+{
+  "id": "opp-0007",
+  "title": "Smart hands for a network refresh in 14 stores",
+  "customer": "Marlow & Finch Retail",
+  "countries": [
+    "GB",
+    "IE"
+  ],
+  "refs": [
+    {
+      "type": "SF PS",
+      "value": "HPELL20261105-246118"
+    }
+  ],
+  "summary": "Switch and access point replacement in 14 stores, evenings only. The quote was sent on 14 November. The customer has not replied since; Sales chased once.",
+  "stakeholders": [
+    {
+      "name": "Harriet Pell",
+      "company": "Evernex",
+      "role": "Account manager UK",
+      "side": "sales"
+    },
+    {
+      "name": "Owen Sandford",
+      "company": "Marlow & Finch Retail",
+      "role": "Network manager",
+      "side": "customer"
+    },
+    {
+      "name": "Tobias Arnesen",
+      "company": "Evernex",
+      "role": "Solution architect",
+      "side": "proserv"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-11-05",
+      "text": "Request opened in Salesforce."
+    },
+    {
+      "date": "2026-11-14",
+      "text": "Quote sent."
+    },
+    {
+      "date": "2026-11-20",
+      "text": "Sales chased the customer; no reply yet."
+    }
+  ],
+  "deadline": null,
+  "nextAction": {
+    "text": "Ask Sales whether the customer has a decision date",
+    "due": "2026-11-28"
+  },
+  "suggest": {
+    "sa": "mara-lindqvist",
+    "pm": "helena-voss",
+    "reason": "United Kingdom and Ireland: EMEA defaults from the rule table."
+  },
+  "mails": [
+    {
+      "date": "2026-11-20T15:20:00+01:00",
+      "from": "Harriet Pell",
+      "subject": "RE: M&F store refresh - quote - SF ref: HPELL20261105-246118"
+    },
+    {
+      "date": "2026-11-14T16:48:00+01:00",
+      "from": "Tobias Arnesen",
+      "subject": "RE: M&F store refresh - quote - SF ref: HPELL20261105-246118"
+    },
+    {
+      "date": "2026-11-05T10:31:00+01:00",
+      "from": "Harriet Pell",
+      "subject": "M&F store refresh - SF ref: HPELL20261105-246118"
+    }
+  ],
+  "needsReview": false,
+  "mailCount": 3,
+  "lastMailAt": "2026-11-20T15:20:00+01:00",
+  "firstMailAt": "2026-11-05T10:31:00+01:00"
+}
