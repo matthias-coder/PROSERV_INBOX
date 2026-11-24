@@ -1,0 +1,21 @@
+{
+  "salesPm": "",
+  "sa": "karim-benali",
+  "pm": "",
+  "salesRegion": "",
+  "serviceRegions": [],
+  "stage": "4",
+  "outcome": "lost",
+  "closeReason": "Price: the incumbent was about 15 % lower",
+  "closedAt": "2026-11-06",
+  "fastLane": false,
+  "tcv": 220000,
+  "nextAction": {
+    "text": "",
+    "who": "",
+    "due": ""
+  },
+  "note": "",
+  "updatedAt": "2026-11-24T10:15:00+01:00",
+  "updatedBy": "seed"
+}

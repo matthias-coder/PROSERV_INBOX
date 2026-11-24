@@ -257,7 +257,8 @@ OPPS = [
         "customer": "Norvane Bank",
         "countries": ["IN"], "salesRegions": ["amu"],
         "refs": [{"type": "SF PS", "value": "RMEHR20261117-248690"}],
-        "summary": "Sales received an indicative price and thanked Proserv. The customer can be asked for whatever is still missing to turn the indication into a commercial offer.",
+        "tcv": 240000,
+        "summary": "Sales received an indicative price of about EUR 240,000 and thanked Proserv. The customer can be asked for whatever is still missing to turn the indication into a commercial offer.",
         "stakeholders": [
             who("Rohan Mehrotra", "Evernex", "Sales director", "sales"),
             who("Zara Qureshi", "Evernex", "Sales PM, sent the indicative price", "proserv"),
@@ -437,29 +438,111 @@ OPPS = [
 ]
 
 
-def assign(stage, sales_pm="", sa="", pm="", outcome="", note="", next_text="", next_who="", next_due=""):
+def closed_opp(opp_id, title, customer, country, sales_region, ref, summary, requester, contact, opened, closed, last_subject):
+    """A short opportunity that is already closed; it exists so the ratios on the Analysis page have something to count."""
+    return {
+        "id": opp_id, "title": title, "customer": customer, "countries": [country], "salesRegions": [sales_region],
+        "refs": [{"type": "SF PS", "value": ref}] if ref else [],
+        "summary": summary,
+        "stakeholders": [who(requester, "Evernex", "Account manager, requester", "sales"), who(contact, customer, "Customer contact", "customer")],
+        "timeline": [step(opened, "Request received."), step(closed, "Closed.")],
+        "deadline": None, "nextAction": None,
+        "suggest": {"salesPm": "", "sa": "", "pm": "", "reason": ""},
+        "mails": [mail(closed + "T15:10:00+01:00", requester, "RE: " + last_subject), mail(opened + "T09:30:00+01:00", requester, last_subject)],
+    }
+
+
+OPPS += [
+    {
+        "id": "opp-0012",
+        "title": "Two days of smart hands, Zurich",
+        "customer": "Alpenquell Getränke",
+        "countries": ["CH"], "salesRegions": ["nece"],
+        "refs": [{"type": "SF PS", "value": "SKELL20261119-249870"}],
+        "summary": "Two engineers for two days to re-cable four racks. Standard day rates apply, so Sales asked for a quick quote without a solution design.",
+        "stakeholders": [
+            who("Silvan Keller", "Evernex", "Account manager Switzerland", "sales"),
+            who("Lukas Brandauer", "Evernex", "Sales PM", "proserv"),
+        ],
+        "timeline": [step("2026-11-19", "Request opened in Salesforce."), step("2026-11-20", "Quote from the rate card in preparation.")],
+        "deadline": "2026-11-28", "deadlineNote": "Customer wants the quote this week",
+        "nextAction": {"text": "Send the rate-card quote", "due": "2026-11-26"},
+        "suggest": {"salesPm": "jonas-pfeiffer", "sa": "florian-achterberg", "pm": "katrin-wendel", "reason": "Site in Switzerland: default owners of NECE."},
+        "mails": [
+            mail("2026-11-20T11:25:00+01:00", "Lukas Brandauer", "RE: Alpenquell smart hands ZRH - SF ref: SKELL20261119-249870"),
+            mail("2026-11-19T14:02:00+01:00", "Silvan Keller", "Alpenquell smart hands ZRH - SF ref: SKELL20261119-249870"),
+        ],
+    },
+    closed_opp("opp-0013", "Hardware refresh services, Milan", "Lombarda Credito", "IT", "swe", "GFERR20260915-238114",
+               "Installation services for a server refresh in two data centres. Quoted in October; the customer chose the incumbent.",
+               "Giulia Ferrante", "Paolo Mancuso", "2026-09-15", "2026-11-06", "Lombarda refresh services - SF ref: GFERR20260915-238114"),
+    closed_opp("opp-0014", "On-site spares management, Dubai", "Sahra Telecom", "AE", "amu", "",
+               "Request for an on-site spares stock with a four-hour response. No partner could cover the response time, so Proserv decided not to bid.",
+               "Nabil Farouk", "Huda Al Marri", "2026-10-21", "2026-10-30", "Sahra Telecom on-site spares"),
+    closed_opp("opp-0015", "Server room clean-up, Gothenburg", "Nordhavn Shipping", "SE", "nece", "ALIND20260610-226730",
+               "Removal of 60 legacy servers with data erasure. Delivered in September, invoiced and paid; the project P&L is closed.",
+               "Astrid Lindholm", "Jens Bergqvist", "2026-06-10", "2026-11-14", "Nordhavn clean-up - SF ref: ALIND20260610-226730"),
+    closed_opp("opp-0016", "Network audit, Toronto", "Maplecrest Credit Union", "CA", "noram", "DOKAF20261008-242255",
+               "Audit of the branch network before a refresh. The quote was sent; the customer then moved the whole project to 2027.",
+               "Derek Okafor", "Lindsay Tremblay", "2026-10-08", "2026-11-10", "Maplecrest network audit - SF ref: DOKAF20261008-242255"),
+    closed_opp("opp-0017", "Asset disposal, Mexico City", "Grupo Altavera", "MX", "latam", "MSAND20260902-236480",
+               "Disposal of about 900 assets from an office move. Lost in negotiation to a local provider.",
+               "Mateo Sandoval", "Ximena Rojas", "2026-09-02", "2026-10-22", "Altavera asset disposal - SF ref: MSAND20260902-236480"),
+    {
+        "id": "opp-0018",
+        "title": "Storage expansion installation, Manchester",
+        "customer": "Pennine Water",
+        "countries": ["GB"], "salesRegions": ["amu"],
+        "refs": [{"type": "SF PS", "value": "HPELL20261012-242901"}],
+        "summary": "Installation of four expansion shelves and firmware updates on two arrays. Won in early November; delivery is planned for the first week of December and no project manager is named yet.",
+        "stakeholders": [
+            who("Harriet Pell", "Evernex", "Account manager UK", "sales"),
+            who("Ravi Deshmukh", "Pennine Water", "Storage administrator", "customer"),
+            who("Tariq Haddad", "Evernex", "Solution Architect", "proserv"),
+        ],
+        "timeline": [step("2026-10-12", "Request opened in Salesforce."), step("2026-11-04", "Purchase order received."), step("2026-12-01", "Installation window starts.")],
+        "deadline": "2026-12-01", "deadlineNote": "Installation window agreed with the customer",
+        "nextAction": {"text": "Name who runs the delivery and confirm the engineers", "due": "2026-11-26"},
+        "suggest": {"salesPm": "helen-ashdown", "sa": "jun-wei-ong", "pm": "", "reason": "Site in the United Kingdom: default owners of AMU. AMU has no Project Manager yet."},
+        "mails": [
+            mail("2026-11-23T12:40:00+01:00", "Harriet Pell", "RE: Pennine storage expansion - delivery dates - SF ref: HPELL20261012-242901"),
+            mail("2026-11-04T16:05:00+01:00", "Ravi Deshmukh", "RE: Pennine storage expansion - PO"),
+        ],
+    },
+]
+
+
+def assign(stage, sales_pm="", sa="", pm="", outcome="", note="", next_text="", next_who="", next_due="", tcv=None, fast_lane=False, reason="", closed_at=""):
     return {"salesPm": sales_pm, "sa": sa, "pm": pm, "salesRegion": "", "serviceRegions": [], "stage": stage, "outcome": outcome,
+            "closeReason": reason, "closedAt": closed_at, "fastLane": fast_lane, "tcv": tcv,
             "nextAction": {"text": next_text, "who": next_who, "due": next_due}, "note": note}
 
 
 ASSIGN = {
-    "opp-0002": assign("2", sa="florian-achterberg", note="Sales PM open: SWE has none, to be agreed with NORAM."),
-    "opp-0004": assign("6", outcome="lost", note="Declined: the company is a partner, not a customer."),
+    "opp-0002": assign("2", sa="florian-achterberg", tcv=1450000, note="Sales PM open: SWE has none, to be agreed with NORAM."),
+    "opp-0004": assign("3.1-3.2", outcome="no-bid", tcv=6500, reason="Requester is a partner, not a customer", closed_at="2026-11-23"),
     "opp-0005": assign("3.3", sales_pm="zara-qureshi", sa="jun-wei-ong"),
-    "opp-0006": assign("3.4", sales_pm="jonas-pfeiffer", sa="florian-achterberg",
+    "opp-0006": assign("3.4", sales_pm="jonas-pfeiffer", sa="florian-achterberg", tcv=185000,
                        next_text="Finish the effort estimate for Vienna including the weekend option", next_who="florian-achterberg", next_due="2026-11-27"),
-    "opp-0007": assign("4", sales_pm="helen-ashdown", sa="tariq-haddad"),
-    "opp-0008": assign("3.1-3.2", sales_pm="hector-salgado", sa="trevor-lindgren"),
-    "opp-0009": assign("8", sales_pm="jonas-pfeiffer", sa="florian-achterberg", pm="katrin-wendel"),
-    "opp-0010": assign("12", sa="karim-benali", pm="julien-carpentier"),
-    "opp-0011": assign("7", sales_pm="curtis-halloran", sa="angela-kowalski"),
+    "opp-0007": assign("4", sales_pm="helen-ashdown", sa="tariq-haddad", tcv=96000),
+    "opp-0008": assign("3.1-3.2", sales_pm="hector-salgado", sa="trevor-lindgren", tcv=310000),
+    "opp-0009": assign("8", sales_pm="jonas-pfeiffer", sa="florian-achterberg", pm="katrin-wendel", tcv=1120000),
+    "opp-0010": assign("12", sa="karim-benali", pm="julien-carpentier", tcv=268000),
+    "opp-0011": assign("7", sales_pm="curtis-halloran", sa="angela-kowalski", tcv=74000),
+    "opp-0012": assign("3.3", sales_pm="lukas-brandauer", tcv=6200, fast_lane=True),
+    "opp-0013": assign("4", sales_pm="", sa="karim-benali", outcome="lost", tcv=220000, reason="Price: the incumbent was about 15 % lower", closed_at="2026-11-06"),
+    "opp-0014": assign("3.1-3.2", outcome="no-bid", reason="No partner coverage for a four-hour response", closed_at="2026-10-30"),
+    "opp-0015": assign("14", sales_pm="jonas-pfeiffer", sa="florian-achterberg", pm="sabine-rottger", outcome="done", tcv=58000, closed_at="2026-11-14"),
+    "opp-0016": assign("3.3", sales_pm="curtis-halloran", sa="angela-kowalski", outcome="cancelled", tcv=41000, reason="Customer moved the project to 2027", closed_at="2026-11-10"),
+    "opp-0017": assign("4", sales_pm="hector-salgado", sa="trevor-lindgren", outcome="lost", tcv=132000, reason="Customer chose a local provider", closed_at="2026-10-22"),
+    "opp-0018": assign("10", sales_pm="helen-ashdown", sa="tariq-haddad", tcv=87000),
 }
 
 SYNC_STATE = {
     "mode": "demo",
     "lastRunAt": "2026-11-24T10:15:00+01:00",
     "lastRunStatus": "ok",
-    "mailsRead": 33,
+    "mailsRead": 49,
     "note": "Demo data. The mailbox is not connected yet; people, customers, reference numbers and mails are invented.",
 }
 

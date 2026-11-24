@@ -1,0 +1,21 @@
+{
+  "salesPm": "jonas-pfeiffer",
+  "sa": "florian-achterberg",
+  "pm": "sabine-rottger",
+  "salesRegion": "",
+  "serviceRegions": [],
+  "stage": "14",
+  "outcome": "done",
+  "closeReason": "",
+  "closedAt": "2026-11-14",
+  "fastLane": false,
+  "tcv": 58000,
+  "nextAction": {
+    "text": "",
+    "who": "",
+    "due": ""
+  },
+  "note": "",
+  "updatedAt": "2026-11-24T10:15:00+01:00",
+  "updatedBy": "seed"
+}

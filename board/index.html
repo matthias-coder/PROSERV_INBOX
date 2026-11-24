@@ -18,6 +18,7 @@
     <nav class="tool-areas" aria-label="Areas">
       <a class="tool-area" id="area-board" href="#opportunities" aria-current="page">Opportunities</a>
       <a class="tool-area" id="area-team" href="#team">Team</a>
+      <a class="tool-area" id="area-analysis" href="#analysis">Analysis</a>
     </nav>
   </div>
 </section>
@@ -39,7 +40,7 @@
             <span class="label" id="l-show">Show</span>
             <div class="seg" role="group" aria-labelledby="l-show" id="f-show">
               <button type="button" class="seg-btn" data-value="open" aria-pressed="true">Open</button>
-              <button type="button" class="seg-btn" data-value="done" aria-pressed="false" title="Lost, declined or completed">Done</button>
+              <button type="button" class="seg-btn" data-value="closed" aria-pressed="false" title="No bid, lost, cancelled or completed">Closed</button>
               <button type="button" class="seg-btn" data-value="all" aria-pressed="false">All</button>
             </div>
           </div>
@@ -61,7 +62,11 @@
   </div>
 
   <div class="board-page" id="page-team" hidden>
-    <div id="team"></div>
+    <div class="board-page" id="team"></div>
+  </div>
+
+  <div class="board-page" id="page-analysis" hidden>
+    <div class="board-page" id="analysis"></div>
   </div>
 </main>
 

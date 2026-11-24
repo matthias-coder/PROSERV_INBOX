@@ -1,0 +1,21 @@
+{
+  "salesPm": "helen-ashdown",
+  "sa": "tariq-haddad",
+  "pm": "",
+  "salesRegion": "",
+  "serviceRegions": [],
+  "stage": "10",
+  "outcome": "",
+  "closeReason": "",
+  "closedAt": "",
+  "fastLane": false,
+  "tcv": 87000,
+  "nextAction": {
+    "text": "",
+    "who": "",
+    "due": ""
+  },
+  "note": "",
+  "updatedAt": "2026-11-24T10:15:00+01:00",
+  "updatedBy": "seed"
+}

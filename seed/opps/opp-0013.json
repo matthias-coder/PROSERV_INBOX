@@ -1,0 +1,66 @@
+{
+  "id": "opp-0013",
+  "title": "Hardware refresh services, Milan",
+  "customer": "Lombarda Credito",
+  "countries": [
+    "IT"
+  ],
+  "salesRegions": [
+    "swe"
+  ],
+  "refs": [
+    {
+      "type": "SF PS",
+      "value": "GFERR20260915-238114"
+    }
+  ],
+  "summary": "Installation services for a server refresh in two data centres. Quoted in October; the customer chose the incumbent.",
+  "stakeholders": [
+    {
+      "name": "Giulia Ferrante",
+      "company": "Evernex",
+      "role": "Account manager, requester",
+      "side": "sales"
+    },
+    {
+      "name": "Paolo Mancuso",
+      "company": "Lombarda Credito",
+      "role": "Customer contact",
+      "side": "customer"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-09-15",
+      "text": "Request received."
+    },
+    {
+      "date": "2026-11-06",
+      "text": "Closed."
+    }
+  ],
+  "deadline": null,
+  "nextAction": null,
+  "suggest": {
+    "salesPm": "",
+    "sa": "",
+    "pm": "",
+    "reason": ""
+  },
+  "mails": [
+    {
+      "date": "2026-11-06T15:10:00+01:00",
+      "from": "Giulia Ferrante",
+      "subject": "RE: Lombarda refresh services - SF ref: GFERR20260915-238114"
+    },
+    {
+      "date": "2026-09-15T09:30:00+01:00",
+      "from": "Giulia Ferrante",
+      "subject": "Lombarda refresh services - SF ref: GFERR20260915-238114"
+    }
+  ],
+  "needsReview": false,
+  "mailCount": 2,
+  "lastMailAt": "2026-11-06T15:10:00+01:00",
+  "firstMailAt": "2026-09-15T09:30:00+01:00"
+}

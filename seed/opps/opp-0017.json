@@ -1,0 +1,66 @@
+{
+  "id": "opp-0017",
+  "title": "Asset disposal, Mexico City",
+  "customer": "Grupo Altavera",
+  "countries": [
+    "MX"
+  ],
+  "salesRegions": [
+    "latam"
+  ],
+  "refs": [
+    {
+      "type": "SF PS",
+      "value": "MSAND20260902-236480"
+    }
+  ],
+  "summary": "Disposal of about 900 assets from an office move. Lost in negotiation to a local provider.",
+  "stakeholders": [
+    {
+      "name": "Mateo Sandoval",
+      "company": "Evernex",
+      "role": "Account manager, requester",
+      "side": "sales"
+    },
+    {
+      "name": "Ximena Rojas",
+      "company": "Grupo Altavera",
+      "role": "Customer contact",
+      "side": "customer"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-09-02",
+      "text": "Request received."
+    },
+    {
+      "date": "2026-10-22",
+      "text": "Closed."
+    }
+  ],
+  "deadline": null,
+  "nextAction": null,
+  "suggest": {
+    "salesPm": "",
+    "sa": "",
+    "pm": "",
+    "reason": ""
+  },
+  "mails": [
+    {
+      "date": "2026-10-22T15:10:00+01:00",
+      "from": "Mateo Sandoval",
+      "subject": "RE: Altavera asset disposal - SF ref: MSAND20260902-236480"
+    },
+    {
+      "date": "2026-09-02T09:30:00+01:00",
+      "from": "Mateo Sandoval",
+      "subject": "Altavera asset disposal - SF ref: MSAND20260902-236480"
+    }
+  ],
+  "needsReview": false,
+  "mailCount": 2,
+  "lastMailAt": "2026-10-22T15:10:00+01:00",
+  "firstMailAt": "2026-09-02T09:30:00+01:00"
+}

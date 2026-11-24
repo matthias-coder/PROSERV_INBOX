@@ -1,0 +1,66 @@
+{
+  "id": "opp-0016",
+  "title": "Network audit, Toronto",
+  "customer": "Maplecrest Credit Union",
+  "countries": [
+    "CA"
+  ],
+  "salesRegions": [
+    "noram"
+  ],
+  "refs": [
+    {
+      "type": "SF PS",
+      "value": "DOKAF20261008-242255"
+    }
+  ],
+  "summary": "Audit of the branch network before a refresh. The quote was sent; the customer then moved the whole project to 2027.",
+  "stakeholders": [
+    {
+      "name": "Derek Okafor",
+      "company": "Evernex",
+      "role": "Account manager, requester",
+      "side": "sales"
+    },
+    {
+      "name": "Lindsay Tremblay",
+      "company": "Maplecrest Credit Union",
+      "role": "Customer contact",
+      "side": "customer"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-10-08",
+      "text": "Request received."
+    },
+    {
+      "date": "2026-11-10",
+      "text": "Closed."
+    }
+  ],
+  "deadline": null,
+  "nextAction": null,
+  "suggest": {
+    "salesPm": "",
+    "sa": "",
+    "pm": "",
+    "reason": ""
+  },
+  "mails": [
+    {
+      "date": "2026-11-10T15:10:00+01:00",
+      "from": "Derek Okafor",
+      "subject": "RE: Maplecrest network audit - SF ref: DOKAF20261008-242255"
+    },
+    {
+      "date": "2026-10-08T09:30:00+01:00",
+      "from": "Derek Okafor",
+      "subject": "Maplecrest network audit - SF ref: DOKAF20261008-242255"
+    }
+  ],
+  "needsReview": false,
+  "mailCount": 2,
+  "lastMailAt": "2026-11-10T15:10:00+01:00",
+  "firstMailAt": "2026-10-08T09:30:00+01:00"
+}

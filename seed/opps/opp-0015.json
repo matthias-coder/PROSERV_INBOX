@@ -1,0 +1,66 @@
+{
+  "id": "opp-0015",
+  "title": "Server room clean-up, Gothenburg",
+  "customer": "Nordhavn Shipping",
+  "countries": [
+    "SE"
+  ],
+  "salesRegions": [
+    "nece"
+  ],
+  "refs": [
+    {
+      "type": "SF PS",
+      "value": "ALIND20260610-226730"
+    }
+  ],
+  "summary": "Removal of 60 legacy servers with data erasure. Delivered in September, invoiced and paid; the project P&L is closed.",
+  "stakeholders": [
+    {
+      "name": "Astrid Lindholm",
+      "company": "Evernex",
+      "role": "Account manager, requester",
+      "side": "sales"
+    },
+    {
+      "name": "Jens Bergqvist",
+      "company": "Nordhavn Shipping",
+      "role": "Customer contact",
+      "side": "customer"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-06-10",
+      "text": "Request received."
+    },
+    {
+      "date": "2026-11-14",
+      "text": "Closed."
+    }
+  ],
+  "deadline": null,
+  "nextAction": null,
+  "suggest": {
+    "salesPm": "",
+    "sa": "",
+    "pm": "",
+    "reason": ""
+  },
+  "mails": [
+    {
+      "date": "2026-11-14T15:10:00+01:00",
+      "from": "Astrid Lindholm",
+      "subject": "RE: Nordhavn clean-up - SF ref: ALIND20260610-226730"
+    },
+    {
+      "date": "2026-06-10T09:30:00+01:00",
+      "from": "Astrid Lindholm",
+      "subject": "Nordhavn clean-up - SF ref: ALIND20260610-226730"
+    }
+  ],
+  "needsReview": false,
+  "mailCount": 2,
+  "lastMailAt": "2026-11-14T15:10:00+01:00",
+  "firstMailAt": "2026-06-10T09:30:00+01:00"
+}

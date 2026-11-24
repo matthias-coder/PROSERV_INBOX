@@ -134,3 +134,13 @@ Matthias supplied the PS process stages and the PS organisation.
 - **Team page:** the organisation by region and team, with the open opportunities per owner; a click filters the board by that person.
 - **Demo people:** 45 invented names in the shape of the organisation (roles and head count per region). No real names are stored in the repository or the database. Open positions and absences are not shown.
 - **Filters:** Show (open, done, all), service region, sales region, stage and person.
+
+## Workload, value and outcomes (2026-11-24)
+
+Asked for by Matthias after the second build.
+
+- **TCV:** each opportunity has a total contract value in EUR. The team's value counts; a value the sync reads from the mails is shown with a question mark until confirmed. One currency only, which is an assumption.
+- **Closing:** the outcome is No bid, Lost, Cancelled or Completed, with a reason and the closing date. "Lost or declined" from the earlier build is split into No bid and Lost.
+- **Fast lane:** a flag for small deals. A fast-lane opportunity needs no Solution Architect. It is set by hand; there is no TCV threshold.
+- **Team page:** key figures, workload by region and role (people, open opportunities, per person, unfilled), demand by site country, and per person the open opportunities and TCV. There is no capacity per person, so workload is a count.
+- **Analysis page:** pipeline by stage, bid rate, win rate, won and lost TCV, fast-lane share, the figures per sales region, and the list of what was closed without a win. The counting rules are in `sync/schema.md` and at the foot of the page. There is no time filter yet.

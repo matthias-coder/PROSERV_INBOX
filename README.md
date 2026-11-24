@@ -1,7 +1,7 @@
 # Proserv Board
 
 The shared mailbox EVX Proserv as an opportunity board: one row per request instead of one row per mail,
-with Sales PM, Solution Architect, Project Manager, sales and service region, stage and next action.
+with Sales PM, Solution Architect, Project Manager, sales and service region, stage, TCV and next action.
 Published as a claude.ai artifact in the TITANIA look.
 
 Board: https://claude.ai/artifact/TLC2jbE9C9WThwYQUrbjDx
@@ -11,7 +11,7 @@ Board: https://claude.ai/artifact/TLC2jbE9C9WThwYQUrbjDx
 | Part | State |
 |---|---|
 | Board page | built, published, tested locally and against the artifact database |
-| Demo data | 11 invented opportunities and 45 invented people in the shape of the PS organisation; the board says so in a notice |
+| Demo data | 18 invented opportunities and 45 invented people in the shape of the PS organisation; the board says so in a notice |
 | Sync from the mailbox | **not built.** `sync/prompt.md` is a draft that has never run |
 | Microsoft 365 connector | not connected; whether it can read the shared mailbox is unknown |
 | Master data | invented people; the country-to-region mapping is a guess; real lists are still missing |
@@ -28,7 +28,12 @@ The design and the decisions behind it are in `docs/superpowers/specs/2026-11-24
   the owner their phase needs come first.
 - The service region follows the countries of an opportunity, the sales region is read from the mails;
   both can be set by hand.
-- The Team page shows the PS organisation by region with each owner's open opportunities.
+- An opportunity is closed with an outcome (no bid, lost, cancelled, completed) and a reason.
+  Small deals can be marked as fast lane and then need no Solution Architect.
+- The Team page shows the workload: open opportunities per region and role with the roles nobody fills,
+  demand per site country, and each person's open opportunities and TCV.
+- The Analysis page shows the pre-sales pipeline by stage, bid rate, win rate, the figures per sales
+  region and everything closed without a win, with reasons. The counting rules are in `sync/schema.md`.
 
 The data model is in `sync/schema.md`.
 

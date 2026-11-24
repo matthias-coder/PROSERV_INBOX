@@ -1,0 +1,61 @@
+{
+  "id": "opp-0014",
+  "title": "On-site spares management, Dubai",
+  "customer": "Sahra Telecom",
+  "countries": [
+    "AE"
+  ],
+  "salesRegions": [
+    "amu"
+  ],
+  "refs": [],
+  "summary": "Request for an on-site spares stock with a four-hour response. No partner could cover the response time, so Proserv decided not to bid.",
+  "stakeholders": [
+    {
+      "name": "Nabil Farouk",
+      "company": "Evernex",
+      "role": "Account manager, requester",
+      "side": "sales"
+    },
+    {
+      "name": "Huda Al Marri",
+      "company": "Sahra Telecom",
+      "role": "Customer contact",
+      "side": "customer"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-10-21",
+      "text": "Request received."
+    },
+    {
+      "date": "2026-10-30",
+      "text": "Closed."
+    }
+  ],
+  "deadline": null,
+  "nextAction": null,
+  "suggest": {
+    "salesPm": "",
+    "sa": "",
+    "pm": "",
+    "reason": ""
+  },
+  "mails": [
+    {
+      "date": "2026-10-30T15:10:00+01:00",
+      "from": "Nabil Farouk",
+      "subject": "RE: Sahra Telecom on-site spares"
+    },
+    {
+      "date": "2026-10-21T09:30:00+01:00",
+      "from": "Nabil Farouk",
+      "subject": "Sahra Telecom on-site spares"
+    }
+  ],
+  "needsReview": false,
+  "mailCount": 2,
+  "lastMailAt": "2026-10-30T15:10:00+01:00",
+  "firstMailAt": "2026-10-21T09:30:00+01:00"
+}

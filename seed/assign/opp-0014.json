@@ -1,0 +1,21 @@
+{
+  "salesPm": "",
+  "sa": "",
+  "pm": "",
+  "salesRegion": "",
+  "serviceRegions": [],
+  "stage": "3.1-3.2",
+  "outcome": "no-bid",
+  "closeReason": "No partner coverage for a four-hour response",
+  "closedAt": "2026-10-30",
+  "fastLane": false,
+  "tcv": null,
+  "nextAction": {
+    "text": "",
+    "who": "",
+    "due": ""
+  },
+  "note": "",
+  "updatedAt": "2026-11-24T10:15:00+01:00",
+  "updatedBy": "seed"
+}

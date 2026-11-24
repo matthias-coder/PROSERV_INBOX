@@ -1,0 +1,21 @@
+{
+  "salesPm": "hector-salgado",
+  "sa": "trevor-lindgren",
+  "pm": "",
+  "salesRegion": "",
+  "serviceRegions": [],
+  "stage": "4",
+  "outcome": "lost",
+  "closeReason": "Customer chose a local provider",
+  "closedAt": "2026-10-22",
+  "fastLane": false,
+  "tcv": 132000,
+  "nextAction": {
+    "text": "",
+    "who": "",
+    "due": ""
+  },
+  "note": "",
+  "updatedAt": "2026-11-24T10:15:00+01:00",
+  "updatedBy": "seed"
+}

@@ -1,0 +1,21 @@
+{
+  "salesPm": "curtis-halloran",
+  "sa": "angela-kowalski",
+  "pm": "",
+  "salesRegion": "",
+  "serviceRegions": [],
+  "stage": "3.3",
+  "outcome": "cancelled",
+  "closeReason": "Customer moved the project to 2027",
+  "closedAt": "2026-11-10",
+  "fastLane": false,
+  "tcv": 41000,
+  "nextAction": {
+    "text": "",
+    "who": "",
+    "due": ""
+  },
+  "note": "",
+  "updatedAt": "2026-11-24T10:15:00+01:00",
+  "updatedBy": "seed"
+}

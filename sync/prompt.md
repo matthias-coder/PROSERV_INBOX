@@ -47,12 +47,12 @@ This task already runs on a schedule. Do not create, change or offer any schedul
    When opportunity A is merged into B: move its mails and threads to B, delete `opps/A`, and report A's
    id in `sync/state.note` so its `assign` document can be checked by a person.
 6. For every opportunity that received a mail or was merged, rewrite `title`, `customer`, `countries`,
-   `salesRegions` (the region of the requesting sales person or of the account, if the mails say it), `summary`, `stakeholders`, `timeline`, `deadline`, `nextAction`, `mails` and the counters from all of
+   `salesRegions` (the region of the requesting sales person or of the account, if the mails say it), `tcv` (only a total value a mail names, in EUR, otherwise null), `summary`, `stakeholders`, `timeline`, `deadline`, `nextAction`, `mails` and the counters from all of
    its mails. Write for a colleague who has not read the thread: plain sentences, no praise, no guesses.
 7. Set `suggest` for opportunities with an empty owner in `assign`: the Sales PM is the default of the
    first sales region; Solution Architect and Project Manager are the defaults of the region of the first
    country (`config/regions.countries`, then `defaults`). Leave a role empty if the region has no default.
-   Say in `reason` which rule you used. Never set a stage or an outcome: the team does that.
+   Say in `reason` which rule you used. Never set a stage, an outcome, the fast lane or a confirmed TCV: the team does that.
 8. Write the changed `opps` and `threads` in batches, each pinned to the version you read.
 9. Write `sync/state`: `mode: "live"`, `lastRunAt` (the time this run started), `lastRunStatus: "ok"`,
    `mailsRead` and a `note` of at most two sentences on anything a person should look at.

@@ -6,6 +6,10 @@
   "serviceRegions": [],
   "stage": "12",
   "outcome": "",
+  "closeReason": "",
+  "closedAt": "",
+  "fastLane": false,
+  "tcv": 268000,
   "nextAction": {
     "text": "",
     "who": "",

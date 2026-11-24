@@ -6,6 +6,10 @@
   "serviceRegions": [],
   "stage": "3.4",
   "outcome": "",
+  "closeReason": "",
+  "closedAt": "",
+  "fastLane": false,
+  "tcv": 185000,
   "nextAction": {
     "text": "Finish the effort estimate for Vienna including the weekend option",
     "who": "florian-achterberg",

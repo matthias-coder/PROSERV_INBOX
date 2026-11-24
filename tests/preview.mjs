@@ -103,6 +103,10 @@ for (const [w, h] of [[1920, 1080], [1280, 800], [390, 844]]) {
   const page = await open(1920, 1080, "light", "#team");
   await page.waitForSelector(".team-card");
   check((await page.locator(".team-card").count()) === 6, "team page shows the group and five regions");
+  check((await page.locator("#team .kpi-value").allTextContents()).slice(0, 2).join("|") === "12|5", "team KPIs: 12 open, 5 need an owner");
+  const amuPm = await page.locator("#team .dash-table").first().locator("tr", { hasText: "AMU" }).filter({ hasText: "Project Manager" }).textContent();
+  check(/Nobody in this role/.test(amuPm) && /1$/.test(amuPm.trim()), "workload table shows AMU without a Project Manager and one unfilled opportunity");
+  check(/United Kingdom/.test(await page.locator("#team .dash-table").nth(1).textContent()), "demand by country lists the United Kingdom");
   check((await overflow(page)) <= 0, "team page: no sideways scroll at 1920px");
   await page.screenshot({ path: path.join(outDir, "team-1920-light.png"), fullPage: true });
   await page.setViewportSize({ width: 390, height: 844 });
@@ -114,18 +118,34 @@ for (const [w, h] of [[1920, 1080], [1280, 800], [390, 844]]) {
   await page.context().close();
 }
 
+{ // analysis page
+  const page = await open(1920, 1080, "light", "#analysis");
+  await page.waitForSelector("#analysis .kpi");
+  const kpis = (await page.locator("#analysis .kpi").allTextContents()).join(" | ");
+  check(/86 %Bid rate12 bid · 2 no bid/.test(kpis), "bid rate: 12 bid, 2 no bid, 86 %");
+  check(/71 %Win rate5 won · 2 lost/.test(kpis), "win rate: 5 won, 2 lost, 71 %");
+  check((await page.locator("#analysis .dash-table").last().locator("tbody tr").count()) === 5, "five opportunities closed without a win");
+  check((await overflow(page)) <= 0, "analysis page: no sideways scroll at 1920px");
+  await page.screenshot({ path: path.join(outDir, "analysis-1920-light.png"), fullPage: true });
+  await page.emulateMedia({ colorScheme: "dark" });
+  await page.screenshot({ path: path.join(outDir, "analysis-1920-dark.png"), fullPage: true });
+  await page.setViewportSize({ width: 390, height: 844 });
+  check((await overflow(page)) <= 0, "analysis page: no sideways scroll at 390px");
+  await page.context().close();
+}
+
 { // grouping of the seed and the stamp
   const page = await open(1600, 900, "light");
-  check((await page.locator(".opp-btn").count()) === 10, "open filter shows the 10 open opportunities");
+  check((await page.locator(".opp-btn").count()) === 12, "open filter shows the 12 open opportunities");
   check((await page.locator(".board-section .section-title").allTextContents()).join("|") === "Needs an owner|Pre-sales|Delivery|Finance", "sections follow owner need and the three phases");
-  check(/10 open · 4 need an owner/.test(await page.locator("#stamp").textContent()), "stamp counts open and unowned opportunities");
+  check(/12 open · 5 need an owner/.test(await page.locator("#stamp").textContent()), "stamp counts open and unowned opportunities");
   await page.locator('#f-show [data-value="all"]').click();
-  check((await page.locator(".opp-btn").count()) === 11, "all filter shows 11 opportunities");
+  check((await page.locator(".opp-btn").count()) === 18, "all filter shows 18 opportunities");
   await page.locator("#f-service").selectOption("amu");
-  check((await page.locator(".opp-btn").count()) === 4, "service region AMU shows 4 opportunities");
+  check((await page.locator(".opp-btn").count()) === 6, "service region AMU shows 6 opportunities");
   await page.locator("#f-service").selectOption("");
   await page.locator("#f-stage").selectOption("3.3");
-  check((await page.locator(".opp-btn").count()) === 1, "stage 3.3 shows 1 opportunity");
+  check((await page.locator(".opp-btn").count()) === 3, "stage 3.3 shows 3 opportunities");
   await page.locator("#f-stage").selectOption("");
   await page.locator("#f-search").fill("VC-104512");
   await page.waitForTimeout(300);
@@ -139,13 +159,32 @@ for (const [w, h] of [[1920, 1080], [1280, 800], [390, 844]]) {
   await page.locator("#p-apply").click();
   check((await page.locator("#p-sa").inputValue()) === "jun-wei-ong" && (await page.locator("#p-salespm").inputValue()) === "helen-ashdown", "suggestion fills the empty Sales PM and SA fields");
   await page.locator("#p-stage").selectOption("2");
+  await page.locator("#p-tcv").fill("52000");
   await page.locator("#p-save").click();
   await page.waitForFunction(() => /Saved at/.test(document.querySelector("#panel .panel-msg.save").textContent));
   const writes = await page.evaluate(() => window.__WRITES__);
-  check(writes.length === 1 && writes[0].path === "assign/opp-0001" && writes[0].data.sa === "jun-wei-ong" && writes[0].data.stage === "2", "save writes one assign document and nothing else");
+  check(writes.length === 1 && writes[0].path === "assign/opp-0001" && writes[0].data.sa === "jun-wei-ong" && writes[0].data.stage === "2" && writes[0].data.tcv === 52000, "save writes one assign document and nothing else");
   check((await page.locator("#row-opp-0001 .opp-v").first().textContent()) === "Helen Ashdown", "the row shows the new Sales PM");
   await page.keyboard.press("Escape");
   check(await page.evaluate(() => document.activeElement.id === "row-opp-0001" && document.getElementById("panel").hidden), "Escape closes the panel and returns focus to the row");
+
+  // fast lane: no Solution Architect needed
+  check(/Not needed/.test(await page.locator("#row-opp-0012").textContent()) && /Fast lane/.test(await page.locator("#row-opp-0012").textContent()), "a fast-lane row needs no Solution Architect");
+
+  // close as no bid with a reason
+  await page.locator("#row-opp-0003").click();
+  await page.locator("#p-outcome").selectOption("no-bid");
+  await page.locator("#p-reason").fill("No local partner");
+  await page.locator("#p-save").click();
+  await page.waitForFunction(() => /Saved at/.test(document.querySelector("#panel .panel-msg.save").textContent));
+  const wc = await page.evaluate(() => window.__WRITES__);
+  const last = wc[wc.length - 1];
+  check(last.path === "assign/opp-0003" && last.data.outcome === "no-bid" && last.data.closeReason === "No local partner" && /^\d{4}-\d{2}-\d{2}$/.test(last.data.closedAt), "closing writes outcome, reason and date");
+  await page.keyboard.press("Escape");
+  check(/^No bid/.test(await page.locator("#row-opp-0003").textContent()), "the closed opportunity shows its outcome");
+  await page.locator('#f-show [data-value="open"]').click();
+  check((await page.locator("#row-opp-0003").count()) === 0, "a closed opportunity leaves the open list");
+  await page.locator('#f-show [data-value="all"]').click();
 
   // grouping note
   await page.locator("#row-opp-0008").click();

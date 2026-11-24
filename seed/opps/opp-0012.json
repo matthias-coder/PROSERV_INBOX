@@ -1,0 +1,70 @@
+{
+  "id": "opp-0012",
+  "title": "Two days of smart hands, Zurich",
+  "customer": "Alpenquell Getränke",
+  "countries": [
+    "CH"
+  ],
+  "salesRegions": [
+    "nece"
+  ],
+  "refs": [
+    {
+      "type": "SF PS",
+      "value": "SKELL20261119-249870"
+    }
+  ],
+  "summary": "Two engineers for two days to re-cable four racks. Standard day rates apply, so Sales asked for a quick quote without a solution design.",
+  "stakeholders": [
+    {
+      "name": "Silvan Keller",
+      "company": "Evernex",
+      "role": "Account manager Switzerland",
+      "side": "sales"
+    },
+    {
+      "name": "Lukas Brandauer",
+      "company": "Evernex",
+      "role": "Sales PM",
+      "side": "proserv"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-11-19",
+      "text": "Request opened in Salesforce."
+    },
+    {
+      "date": "2026-11-20",
+      "text": "Quote from the rate card in preparation."
+    }
+  ],
+  "deadline": "2026-11-28",
+  "deadlineNote": "Customer wants the quote this week",
+  "nextAction": {
+    "text": "Send the rate-card quote",
+    "due": "2026-11-26"
+  },
+  "suggest": {
+    "salesPm": "jonas-pfeiffer",
+    "sa": "florian-achterberg",
+    "pm": "katrin-wendel",
+    "reason": "Site in Switzerland: default owners of NECE."
+  },
+  "mails": [
+    {
+      "date": "2026-11-20T11:25:00+01:00",
+      "from": "Lukas Brandauer",
+      "subject": "RE: Alpenquell smart hands ZRH - SF ref: SKELL20261119-249870"
+    },
+    {
+      "date": "2026-11-19T14:02:00+01:00",
+      "from": "Silvan Keller",
+      "subject": "Alpenquell smart hands ZRH - SF ref: SKELL20261119-249870"
+    }
+  ],
+  "needsReview": false,
+  "mailCount": 2,
+  "lastMailAt": "2026-11-20T11:25:00+01:00",
+  "firstMailAt": "2026-11-19T14:02:00+01:00"
+}

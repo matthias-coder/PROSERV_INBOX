@@ -31,6 +31,7 @@ Access rules of the published page: the root keeps the defaults (read `view`, wr
 | `countries` | string[] | ISO 3166-1 alpha-2 codes of the sites; the service region follows from them |
 | `salesRegions` | string[] | region ids of the sales side: where the requester or the account sits |
 | `refs` | `{type, value}[]` | `type` is `SF PS`, `IFS VC` or the name of another CRM |
+| `tcv` | number or null | total contract value in EUR, only if a mail names it; the board marks it as not confirmed |
 | `summary` | string | three sentences at most: what is asked, where it stands, what blocks it |
 | `stakeholders` | `{name, company, role, side}[]` | `side` is `customer`, `sales`, `proserv` or `partner` |
 | `timeline` | `{date, text}[]` | `date` as `YYYY-MM-DD`, oldest first, future dates allowed |
@@ -50,7 +51,10 @@ Access rules of the published page: the root keeps the defaults (read `view`, wr
 | `salesRegion` | string | region id; empty means "as the sync read it from the mails" |
 | `serviceRegions` | string[] | region ids; empty means "follow the countries" |
 | `stage` | string | stage id from the table below; no document means `1` |
-| `outcome` | string | empty while open, `lost` (lost or declined) or `done` (completed) |
+| `outcome` | string | empty while open; `no-bid`, `lost`, `cancelled` or `done` (completed) |
+| `closeReason`, `closedAt` | string, `YYYY-MM-DD` | why and when it was closed; the page sets the date when the outcome is chosen |
+| `fastLane` | boolean | small deal that needs no Solution Architect |
+| `tcv` | number or null | total contract value in EUR as the team confirmed it; overrides the value read from the mails |
 | `nextAction` | `{text, who, due}` | empty text means "show the sync's suggestion" |
 | `note` | string | |
 | `updatedAt`, `updatedBy` | ISO date-time, viewer id | set by the page |
@@ -65,6 +69,24 @@ Access rules of the published page: the root keeps the defaults (read `view`, wr
 
 An opportunity is open while `outcome` is empty. It "needs an owner" while it is open and
 is in pre-sales without a Sales PM or Solution Architect, or in delivery without a Project Manager.
+A fast-lane opportunity needs only the Sales PM in pre-sales.
+
+### Figures on the Analysis page
+
+Counted over every opportunity in the database, with no time filter.
+
+| Figure | Rule |
+|---|---|
+| Bid | outcome is not `no-bid`, and the stage is `3.3` or later or the outcome is `lost` |
+| No bid | outcome `no-bid` |
+| Won | stage `6` or later and the outcome is not `no-bid`, `lost` or `cancelled` |
+| Lost | outcome `lost` |
+| Bid rate | bid / (bid + no bid) |
+| Win rate | won / (won + lost); cancelled opportunities count in neither rate |
+| Pipeline | open opportunities in pre-sales; TCV is the confirmed value, else the one read from the mails |
+
+Workload on the Team page is the number of open opportunities a person holds in any of the three owner fields.
+There is no capacity per person, so it is a count and not a percentage.
 The phase names and this rule are the board's own; the stage numbers and names are the PS process.
 
 ## `corrections/<id>`
